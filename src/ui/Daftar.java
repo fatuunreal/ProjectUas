@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ui;
+import java.sql.*;
+import javax.swing.JOptionPane;
+import models.Users;
 
 /**
  *
@@ -15,8 +18,37 @@ public class Daftar extends javax.swing.JFrame {
      */
     public Daftar() {
         initComponents();
+        autonumber();
     }
-
+    
+    private void autonumber(){
+        try{
+            Connection conn = Users.checkUsers();
+            Statement stmt = conn.createStatement();
+            String sql = "SELECT * FROM login ORDER BY id DESC";
+            ResultSet rs = stmt.executeQuery(sql);
+            if (rs.next()) {
+                String NoID = rs.getString("id").substring(2);
+                String ID = "" +(Integer.parseInt(NoID)+1);
+                String Zero = "";
+                
+                if (ID.length()==1) 
+                {Zero = "00";}
+                else if(ID.length()==2)
+                {Zero = "0";}
+                else if(ID.length()==3)
+                {Zero = "";}
+                
+                txID.setText("AD" + Zero + ID);
+            }else{
+                txID.setText("AD001");
+            }
+            rs.close();
+            stmt.close();
+        }catch(Exception e){
+            System.out.println("autonumber error");
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,21 +58,123 @@ public class Daftar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtPass = new javax.swing.JPasswordField();
+        txtKonPass = new javax.swing.JPasswordField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtUsername = new javax.swing.JTextPane();
+        btnDaftar = new javax.swing.JButton();
+        btnBatal = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("Daftar");
+
+        jLabel3.setText("Username");
+
+        jLabel4.setText("Password");
+
+        jLabel5.setText("Konfirmasi Password");
+
+        jScrollPane2.setViewportView(txtUsername);
+
+        btnDaftar.setText("Daftar");
+        btnDaftar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDaftarActionPerformed(evt);
+            }
+        });
+
+        btnBatal.setText("Batal");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 545, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(241, 241, 241)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5))
+                        .addGap(58, 58, 58)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnDaftar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnBatal))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                                .addComponent(txtPass)
+                                .addComponent(txtKonPass)))))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 442, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel1)
+                .addGap(71, 71, 71)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(txtKonPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDaftar)
+                    .addComponent(btnBatal))
+                .addContainerGap(141, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnDaftarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDaftarActionPerformed
+        String username = txtUsername.getText().toString().trim();
+        String pass = txtPass.getText().toString().trim();
+        String konPass = txtKonPass.getText().toString().trim();
+
+        if (pass.length() <= 8) {
+            JOptionPane.showMessageDialog(null, "Password harus lebih dari 8 karakter");
+        } else if (!pass.equals(konPass)) {
+            JOptionPane.showMessageDialog(null, "Password tidak sama");
+        } else {
+            try{
+                conn = DriverManager.getConnection(DB_URL, USER, PASS);
+                String sql = "INSERT INTO login VALUES (?, ?, ?)";
+                ps.setString(1, id);
+                ps.setString(1, username);
+                ps.setString(1, password);
+                ps.executeUpdate();
+                ps.close();
+                JOptionPane.showMessageDialog(null, "Buat akun berhasil");
+            }catch(SQLException e){
+                System.out.println("error");
+            }finally{
+                this.dispose();
+                Menu login = new Menu();
+                login.setVisible(true);
+                
+            }
+        }
+
+    }//GEN-LAST:event_btnDaftarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +212,15 @@ public class Daftar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBatal;
+    private javax.swing.JButton btnDaftar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPasswordField txtKonPass;
+    private javax.swing.JPasswordField txtPass;
+    private javax.swing.JTextPane txtUsername;
     // End of variables declaration//GEN-END:variables
 }

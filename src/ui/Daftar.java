@@ -29,23 +29,22 @@ public class Daftar extends javax.swing.JFrame {
     
     private void autonumber(){
         try {
-            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            Statement stmt = conn.createStatement();
-            String sql = "SELECT * FROM login ORDER BY id DESC";
-            ResultSet rs = stmt.executeQuery(sql);
+        Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+        Statement stmt = conn.createStatement();
+        String sql = "SELECT id FROM login ORDER BY id DESC LIMIT 1";
+        ResultSet rs = stmt.executeQuery(sql);
         if (rs.next()) {
-            int id = rs.getInt("id"); // Mengambil nilai ID langsung sebagai int
-            int newId = id + 1; // Increment nilai ID
-
-            String ID = String.format("%03d", newId); // Format ID menjadi tiga digit
-            txtId.setText("AD" + ID); // Set teks pada txtId
-
+            String lastId = rs.getString("id");
+            int numericPart = Integer.parseInt(lastId.substring(2));
+            int newId = numericPart + 1;
+            String formattedId = String.format("ID%03d", newId);
+            txtId.setText(formattedId);
         } else {
-            txtId.setText("AD001"); // Jika tidak ada data, atur sebagai AD001
+            txtId.setText("ID001");
         }
         rs.close();
         stmt.close();
-        conn.close(); // Menutup koneksi database
+        conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("autonumber error: " + e.getMessage());
@@ -135,7 +134,7 @@ public class Daftar extends javax.swing.JFrame {
                                 .addComponent(txtPass)
                                 .addComponent(txtKonPass))
                             .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addContainerGap(250, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,13 +162,14 @@ public class Daftar extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDaftar)
                     .addComponent(btnBatal))
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDaftarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDaftarActionPerformed
+
         String id = txtId.getText().trim();
         String username = txtUsername.getText().trim();
         String pass = new String(txtPass.getPassword()).trim();
@@ -178,10 +178,11 @@ public class Daftar extends javax.swing.JFrame {
         if (!pass.equals(konPass)) {
             JOptionPane.showMessageDialog(this, "Password tidak sama!");
             return;
-        }
-
-        if (pass.length() > 8) {
+        }else if (pass.length() > 8) {
             JOptionPane.showMessageDialog(this, "Password tidak boleh lebih dari 8 karakter!");
+            return;
+        }else if(pass.isEmpty() || username.isEmpty() || konPass.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Semua kolom harus diisi!");
             return;
         }
 
@@ -203,7 +204,6 @@ public class Daftar extends javax.swing.JFrame {
                 Menu a = new Menu();
                 a.setVisible(true);
         }
-
     }//GEN-LAST:event_btnDaftarActionPerformed
 
     private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed

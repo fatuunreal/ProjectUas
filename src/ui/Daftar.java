@@ -5,7 +5,6 @@
 package ui;
 import java.sql.*;
 import javax.swing.JOptionPane;
-import models.Users;
 
 /**
  *
@@ -13,42 +12,46 @@ import models.Users;
  */
 public class Daftar extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Daftar
-     */
+    static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
+    static final String DB_URL = "jdbc:mysql://127.0.0.1/uas?autoReconnect=true&useSSL=false";
+    static final String USER = "root";
+    static final String PASS = "";
+
+    static Connection conn;
+    static Statement stmt;
+    static ResultSet rs;
+    
     public Daftar() {
         initComponents();
+        txtId.setEnabled(false);
         autonumber();
     }
     
     private void autonumber(){
-        try{
-            Connection conn = Users.checkUsers();
+        try {
+            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement stmt = conn.createStatement();
             String sql = "SELECT * FROM login ORDER BY id DESC";
             ResultSet rs = stmt.executeQuery(sql);
-            if (rs.next()) {
-                String NoID = rs.getString("id").substring(2);
-                String ID = "" +(Integer.parseInt(NoID)+1);
-                String Zero = "";
-                
-                if (ID.length()==1) 
-                {Zero = "00";}
-                else if(ID.length()==2)
-                {Zero = "0";}
-                else if(ID.length()==3)
-                {Zero = "";}
-                
-                txID.setText("AD" + Zero + ID);
-            }else{
-                txID.setText("AD001");
-            }
-            rs.close();
-            stmt.close();
-        }catch(Exception e){
-            System.out.println("autonumber error");
+        if (rs.next()) {
+            int id = rs.getInt("id"); // Mengambil nilai ID langsung sebagai int
+            int newId = id + 1; // Increment nilai ID
+
+            String ID = String.format("%03d", newId); // Format ID menjadi tiga digit
+            txtId.setText("AD" + ID); // Set teks pada txtId
+
+        } else {
+            txtId.setText("AD001"); // Jika tidak ada data, atur sebagai AD001
+        }
+        rs.close();
+        stmt.close();
+        conn.close(); // Menutup koneksi database
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("autonumber error: " + e.getMessage());
         }
     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -68,6 +71,8 @@ public class Daftar extends javax.swing.JFrame {
         txtUsername = new javax.swing.JTextPane();
         btnDaftar = new javax.swing.JButton();
         btnBatal = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        txtId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,6 +94,19 @@ public class Daftar extends javax.swing.JFrame {
         });
 
         btnBatal.setText("Batal");
+        btnBatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBatalActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Id");
+
+        txtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -104,7 +122,8 @@ public class Daftar extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel5))
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel2))
                         .addGap(58, 58, 58)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -114,7 +133,8 @@ public class Daftar extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
                                 .addComponent(txtPass)
-                                .addComponent(txtKonPass)))))
+                                .addComponent(txtKonPass))
+                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(132, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -122,7 +142,11 @@ public class Daftar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(jLabel1)
-                .addGap(71, 71, 71)
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
@@ -139,42 +163,56 @@ public class Daftar extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDaftar)
                     .addComponent(btnBatal))
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDaftarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDaftarActionPerformed
-        String username = txtUsername.getText().toString().trim();
-        String pass = txtPass.getText().toString().trim();
-        String konPass = txtKonPass.getText().toString().trim();
+        String id = txtId.getText().trim();
+        String username = txtUsername.getText().trim();
+        String pass = new String(txtPass.getPassword()).trim();
+        String konPass = new String(txtKonPass.getPassword()).trim();
 
-        if (pass.length() <= 8) {
-            JOptionPane.showMessageDialog(null, "Password harus lebih dari 8 karakter");
-        } else if (!pass.equals(konPass)) {
-            JOptionPane.showMessageDialog(null, "Password tidak sama");
-        } else {
-            try{
-                conn = DriverManager.getConnection(DB_URL, USER, PASS);
-                String sql = "INSERT INTO login VALUES (?, ?, ?)";
+        if (!pass.equals(konPass)) {
+            JOptionPane.showMessageDialog(this, "Password tidak sama!");
+            return;
+        }
+
+        if (pass.length() > 8) {
+            JOptionPane.showMessageDialog(this, "Password tidak boleh lebih dari 8 karakter!");
+            return;
+        }
+
+        try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS)) {
+            String sql = "INSERT INTO login (id, username, password) VALUES (?, ?, ?)";
+            try (PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setString(1, id);
-                ps.setString(1, username);
-                ps.setString(1, password);
+                ps.setString(2, username);
+                ps.setString(3, pass);
                 ps.executeUpdate();
                 ps.close();
-                JOptionPane.showMessageDialog(null, "Buat akun berhasil");
-            }catch(SQLException e){
-                System.out.println("error");
-            }finally{
-                this.dispose();
-                Menu login = new Menu();
-                login.setVisible(true);
-                
+                JOptionPane.showMessageDialog(null, "Pembuatan akun berhasil");
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        }finally{
+                this.dispose();
+                Menu a = new Menu();
+                a.setVisible(true);
         }
 
     }//GEN-LAST:event_btnDaftarActionPerformed
+
+    private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
+        new Menu().setVisible(true);
+    }//GEN-LAST:event_btnBatalActionPerformed
+
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,7 +244,7 @@ public class Daftar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Daftar().setVisible(true);
+                new Daftar().setVisible(true);  
             }
         });
     }
@@ -215,10 +253,12 @@ public class Daftar extends javax.swing.JFrame {
     private javax.swing.JButton btnBatal;
     private javax.swing.JButton btnDaftar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField txtId;
     private javax.swing.JPasswordField txtKonPass;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextPane txtUsername;

@@ -63,6 +63,11 @@ public class Menu extends javax.swing.JFrame {
         });
 
         btnDaftar.setText("Daftar");
+        btnDaftar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDaftarActionPerformed(evt);
+            }
+        });
 
         btnInfo.setText("Informasi");
 
@@ -167,6 +172,10 @@ public class Menu extends javax.swing.JFrame {
     private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsernameActionPerformed
+
+    private void btnDaftarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDaftarActionPerformed
+        new Daftar().setVisible(true);
+    }//GEN-LAST:event_btnDaftarActionPerformed
 
     /**
      * @param args the command line arguments

@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Main;
-
+import java.awt.Color; 
 /**
  *
  * @author fatur //
@@ -28,6 +28,11 @@ public class Dashboard extends javax.swing.JFrame {
 
         panelKiri = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        logoDInus = new javax.swing.JLabel();
+        panelBeranda = new javax.swing.JPanel();
+        pnLine = new javax.swing.JPanel();
+        icon = new javax.swing.JLabel();
+        beranda = new javax.swing.JLabel();
         panelKanan = new javax.swing.JPanel();
         panelAtas = new javax.swing.JPanel();
         panalDasar = new javax.swing.JPanel();
@@ -35,40 +40,120 @@ public class Dashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Logo-Web-Biru-1280x260.png"))); // NOI18N
+        logoDInus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Logo-Web-Biru-1280x260.png"))); // NOI18N
+
+        panelBeranda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelBerandaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelBerandaMouseExited(evt);
+            }
+        });
+
+        pnLine.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout pnLineLayout = new javax.swing.GroupLayout(pnLine);
+        pnLine.setLayout(pnLineLayout);
+        pnLineLayout.setHorizontalGroup(
+            pnLineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 12, Short.MAX_VALUE)
+        );
+        pnLineLayout.setVerticalGroup(
+            pnLineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 36, Short.MAX_VALUE)
+        );
+
+        icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home (2).png"))); // NOI18N
+        icon.setText("jLabel2");
+        icon.setPreferredSize(new java.awt.Dimension(40, 40));
+        icon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                iconMouseExited(evt);
+            }
+        });
+
+        beranda.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        beranda.setText("Beranda");
+        beranda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                berandaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                berandaMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelBerandaLayout = new javax.swing.GroupLayout(panelBeranda);
+        panelBeranda.setLayout(panelBerandaLayout);
+        panelBerandaLayout.setHorizontalGroup(
+            panelBerandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBerandaLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(pnLine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(icon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(beranda, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+        panelBerandaLayout.setVerticalGroup(
+            panelBerandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBerandaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelBerandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBerandaLayout.createSequentialGroup()
+                        .addComponent(pnLine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(panelBerandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(icon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(beranda)))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout panelKiriLayout = new javax.swing.GroupLayout(panelKiri);
         panelKiri.setLayout(panelKiriLayout);
         panelKiriLayout.setHorizontalGroup(
             panelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelKiriLayout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+            .addGroup(panelKiriLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(logoDInus)
+                    .addComponent(panelBeranda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelKiriLayout.setVerticalGroup(
             panelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelKiriLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(703, Short.MAX_VALUE))
+                .addGroup(panelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelKiriLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel1))
+                    .addGroup(panelKiriLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(logoDInus, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(35, 35, 35)
+                .addComponent(panelBeranda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(517, Short.MAX_VALUE))
         );
 
         getContentPane().add(panelKiri, java.awt.BorderLayout.LINE_START);
 
         panelKanan.setLayout(new java.awt.BorderLayout());
 
-        panelAtas.setBackground(new java.awt.Color(0, 128, 255));
+        panelAtas.setBackground(new java.awt.Color(0, 0, 255));
 
         javax.swing.GroupLayout panelAtasLayout = new javax.swing.GroupLayout(panelAtas);
         panelAtas.setLayout(panelAtasLayout);
         panelAtasLayout.setHorizontalGroup(
             panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1160, Short.MAX_VALUE)
+            .addGap(0, 761, Short.MAX_VALUE)
         );
         panelAtasLayout.setVerticalGroup(
             panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 85, Short.MAX_VALUE)
+            .addGap(0, 42, Short.MAX_VALUE)
         );
 
         panelKanan.add(panelAtas, java.awt.BorderLayout.PAGE_START);
@@ -79,27 +164,28 @@ public class Dashboard extends javax.swing.JFrame {
         panelUtama.setLayout(panelUtamaLayout);
         panelUtamaLayout.setHorizontalGroup(
             panelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1144, Short.MAX_VALUE)
+            .addGap(0, 709, Short.MAX_VALUE)
         );
         panelUtamaLayout.setVerticalGroup(
             panelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 649, Short.MAX_VALUE)
+            .addGap(0, 585, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panalDasarLayout = new javax.swing.GroupLayout(panalDasar);
         panalDasar.setLayout(panalDasarLayout);
         panalDasarLayout.setHorizontalGroup(
             panalDasarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panalDasarLayout.createSequentialGroup()
-                .addGap(0, 16, Short.MAX_VALUE)
-                .addComponent(panelUtama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(panalDasarLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(panelUtama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
         );
         panalDasarLayout.setVerticalGroup(
             panalDasarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panalDasarLayout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
+                .addGap(15, 15, 15)
                 .addComponent(panelUtama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
+                .addGap(15, 15, 15))
         );
 
         panelKanan.add(panalDasar, java.awt.BorderLayout.CENTER);
@@ -108,6 +194,32 @@ public class Dashboard extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void berandaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_berandaMouseEntered
+        beranda.setBackground(new Color(51,153,255));
+        panelBeranda.setBackground(new Color(51,153,255));
+    }//GEN-LAST:event_berandaMouseEntered
+
+    private void panelBerandaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBerandaMouseEntered
+        beranda.setBackground(new Color(51,153,255));
+        panelBeranda.setBackground(new Color(51,153,255));
+    }//GEN-LAST:event_panelBerandaMouseEntered
+
+    private void panelBerandaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBerandaMouseExited
+        beranda.setBackground(new Color(242,242,242));
+        panelBeranda.setBackground(new Color(242,242,242));
+        pnLine.setBackground(new Color(242,242,242));
+    }//GEN-LAST:event_panelBerandaMouseExited
+
+    private void berandaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_berandaMouseExited
+        beranda.setBackground(new Color(242,242,242));
+        panelBeranda.setBackground(new Color(242,242,242));
+    }//GEN-LAST:event_berandaMouseExited
+
+    private void iconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconMouseExited
+        beranda.setBackground(new Color(242,242,242));
+        panelBeranda.setBackground(new Color(242,242,242));
+    }//GEN-LAST:event_iconMouseExited
 
     /**
      * @param args the command line arguments
@@ -145,11 +257,18 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel beranda;
+    private javax.swing.JLabel icon;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel logoDInus;
     private javax.swing.JPanel panalDasar;
     private javax.swing.JPanel panelAtas;
+    private javax.swing.JPanel panelBeranda;
+    private javax.swing.JPanel panelBeranda1;
     private javax.swing.JPanel panelKanan;
     private javax.swing.JPanel panelKiri;
     private javax.swing.JPanel panelUtama;
+    private javax.swing.JPanel pnLine;
+    private javax.swing.JPanel pnLine1;
     // End of variables declaration//GEN-END:variables
 }

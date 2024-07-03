@@ -1,7 +1,7 @@
 package Front;
 import javax.swing.JOptionPane;
 import models.Users;
-
+import Main.Dashboard;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -165,7 +165,8 @@ public class Menu extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"User tidak ditemukan");
         }
         else{
-            JOptionPane.showMessageDialog(null,"lOGIN BERHASIL");
+            JOptionPane.showMessageDialog(null,"LOGIN BERHASIL");
+            new Dashboard().setVisible(true);
         }
     }//GEN-LAST:event_btnMasukActionPerformed
 

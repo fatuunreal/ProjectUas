@@ -6,7 +6,7 @@ package Main;
 
 /**
  *
- * @author fatur
+ * @author fatur //
  */
 public class Dashboard extends javax.swing.JFrame {
 

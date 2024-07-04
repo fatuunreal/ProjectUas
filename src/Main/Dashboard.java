@@ -6,7 +6,7 @@ package Main;
 import java.awt.Color; 
 /**
  *
- * @author fatur //
+ * @author fatur ++
  */
 public class Dashboard extends javax.swing.JFrame {
 
@@ -551,7 +551,7 @@ public class Dashboard extends javax.swing.JFrame {
         });
 
         beranda7.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        beranda7.setText("Informasi");
+        beranda7.setText("Bantuan");
         beranda7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 beranda7MouseEntered(evt);
@@ -913,7 +913,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel panalDasar;
     private javax.swing.JPanel panelAtas;
     private javax.swing.JPanel panelBeranda;
-    private javax.swing.JPanel panelBeranda1;
     private javax.swing.JPanel panelBeranda2;
     private javax.swing.JPanel panelBeranda3;
     private javax.swing.JPanel panelBeranda4;
@@ -925,7 +924,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel panelKiri;
     private javax.swing.JPanel panelUtama;
     private javax.swing.JPanel pnLine;
-    private javax.swing.JPanel pnLine1;
     private javax.swing.JPanel pnLine2;
     private javax.swing.JPanel pnLine3;
     private javax.swing.JPanel pnLine4;

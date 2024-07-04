@@ -38,13 +38,13 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="logoDInus" min="-2" max="-2" attributes="0"/>
                       <Component id="panelBeranda" min="-2" max="-2" attributes="0"/>
-                      <Component id="panelBeranda2" min="-2" max="-2" attributes="0"/>
-                      <Component id="panelBeranda3" min="-2" max="-2" attributes="0"/>
-                      <Component id="panelBeranda4" min="-2" max="-2" attributes="0"/>
-                      <Component id="panelBeranda5" min="-2" max="-2" attributes="0"/>
-                      <Component id="panelBeranda6" min="-2" max="-2" attributes="0"/>
-                      <Component id="panelBeranda7" min="-2" max="-2" attributes="0"/>
-                      <Component id="panelBeranda8" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelBiodata" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelPendaftaran" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelPrestasi" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelPembayaran" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelFinalisasi" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelLogout" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelInformasi" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -68,19 +68,19 @@
                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   <Component id="panelBeranda" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="panelBeranda2" min="-2" max="-2" attributes="0"/>
+                  <Component id="panelBiodata" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="panelBeranda3" min="-2" max="-2" attributes="0"/>
+                  <Component id="panelPendaftaran" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="panelBeranda4" min="-2" max="-2" attributes="0"/>
+                  <Component id="panelPrestasi" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="panelBeranda5" min="-2" max="-2" attributes="0"/>
+                  <Component id="panelPembayaran" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="panelBeranda6" min="-2" max="-2" attributes="0"/>
+                  <Component id="panelFinalisasi" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="panelBeranda8" min="-2" max="-2" attributes="0"/>
+                  <Component id="panelInformasi" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="29" max="32767" attributes="0"/>
-                  <Component id="panelBeranda7" min="-2" max="-2" attributes="0"/>
+                  <Component id="panelLogout" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -97,7 +97,13 @@
           </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="panelBeranda">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f0" green="f0" red="f0" type="rgb"/>
+            </Property>
+          </Properties>
           <Events>
+            <EventHandler event="componentAdded" listener="java.awt.event.ContainerListener" parameters="java.awt.event.ContainerEvent" handler="panelBerandaComponentAdded"/>
             <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelBerandaMouseEntered"/>
             <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelBerandaMouseExited"/>
           </Events>
@@ -109,7 +115,7 @@
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="pnLine" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="icon" min="-2" pref="52" max="-2" attributes="0"/>
+                      <Component id="iconBeranda" min="-2" pref="52" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="beranda" min="-2" pref="181" max="-2" attributes="0"/>
                       <EmptySpace pref="16" max="32767" attributes="0"/>
@@ -121,7 +127,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="icon" alignment="3" pref="48" max="32767" attributes="0"/>
+                          <Component id="iconBeranda" alignment="3" pref="48" max="32767" attributes="0"/>
                           <Component id="beranda" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="pnLine" max="32767" attributes="0"/>
                       </Group>
@@ -132,6 +138,11 @@
           </Layout>
           <SubComponents>
             <Container class="javax.swing.JPanel" name="pnLine">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="f0" green="f0" red="f0" type="rgb"/>
+                </Property>
+              </Properties>
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -146,7 +157,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Component class="javax.swing.JLabel" name="icon">
+            <Component class="javax.swing.JLabel" name="iconBeranda">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/images/home_icon-icons.com_73532.png"/>
@@ -157,7 +168,8 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="iconMouseExited"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="iconBerandaMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="iconBerandaMouseExited"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="beranda">
@@ -174,10 +186,15 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="panelBeranda2">
+        <Container class="javax.swing.JPanel" name="panelBiodata">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f0" green="f0" red="f0" type="rgb"/>
+            </Property>
+          </Properties>
           <Events>
-            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelBeranda2MouseEntered"/>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelBeranda2MouseExited"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelBiodataMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelBiodataMouseExited"/>
           </Events>
 
           <Layout>
@@ -187,9 +204,9 @@
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="pnLine2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="icon1" min="-2" max="-2" attributes="0"/>
+                      <Component id="iconBiodata" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="beranda1" min="-2" pref="181" max="-2" attributes="0"/>
+                      <Component id="biodata" min="-2" pref="181" max="-2" attributes="0"/>
                       <EmptySpace pref="16" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -199,8 +216,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="icon1" alignment="3" pref="48" max="32767" attributes="0"/>
-                          <Component id="beranda1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="iconBiodata" alignment="3" pref="48" max="32767" attributes="0"/>
+                          <Component id="biodata" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="pnLine2" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -210,6 +227,11 @@
           </Layout>
           <SubComponents>
             <Container class="javax.swing.JPanel" name="pnLine2">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="f0" green="f0" red="f0" type="rgb"/>
+                </Property>
+              </Properties>
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -224,7 +246,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Component class="javax.swing.JLabel" name="icon1">
+            <Component class="javax.swing.JLabel" name="iconBiodata">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/images/biodata_resume_job_application_profile_cv_vitae_curriculum_icon_232605.png"/>
@@ -235,10 +257,11 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="icon1MouseExited"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="iconBiodataMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="iconBiodataMouseExited"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="beranda1">
+            <Component class="javax.swing.JLabel" name="biodata">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="SansSerif" size="14" style="1"/>
@@ -246,16 +269,21 @@
                 <Property name="text" type="java.lang.String" value="Biodata"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="beranda1MouseEntered"/>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="beranda1MouseExited"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="biodataMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="biodataMouseExited"/>
               </Events>
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="panelBeranda3">
+        <Container class="javax.swing.JPanel" name="panelPendaftaran">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f0" green="f0" red="f0" type="rgb"/>
+            </Property>
+          </Properties>
           <Events>
-            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelBeranda3MouseEntered"/>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelBeranda3MouseExited"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelPendaftaranMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelPendaftaranMouseExited"/>
           </Events>
 
           <Layout>
@@ -265,9 +293,9 @@
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="pnLine3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="icon2" min="-2" pref="46" max="-2" attributes="0"/>
+                      <Component id="iconPendaftaran" min="-2" pref="46" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="beranda2" min="-2" pref="181" max="-2" attributes="0"/>
+                      <Component id="pendaftaran" min="-2" pref="181" max="-2" attributes="0"/>
                       <EmptySpace pref="16" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -277,8 +305,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="icon2" alignment="3" pref="48" max="32767" attributes="0"/>
-                          <Component id="beranda2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="iconPendaftaran" alignment="3" pref="48" max="32767" attributes="0"/>
+                          <Component id="pendaftaran" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="pnLine3" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -288,6 +316,11 @@
           </Layout>
           <SubComponents>
             <Container class="javax.swing.JPanel" name="pnLine3">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="f0" green="f0" red="f0" type="rgb"/>
+                </Property>
+              </Properties>
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -302,7 +335,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Component class="javax.swing.JLabel" name="icon2">
+            <Component class="javax.swing.JLabel" name="iconPendaftaran">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/images/writing-tools-symbol-of-interface-with-black-square-paper-note-and-a-pencil_icon-icons.com_72884.png"/>
@@ -313,10 +346,11 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="icon2MouseExited"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="iconPendaftaranMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="iconPendaftaranMouseExited"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="beranda2">
+            <Component class="javax.swing.JLabel" name="pendaftaran">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="SansSerif" size="14" style="1"/>
@@ -324,16 +358,21 @@
                 <Property name="text" type="java.lang.String" value="Pendaftaran"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="beranda2MouseEntered"/>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="beranda2MouseExited"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pendaftaranMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pendaftaranMouseExited"/>
               </Events>
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="panelBeranda4">
+        <Container class="javax.swing.JPanel" name="panelPrestasi">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f0" green="f0" red="f0" type="rgb"/>
+            </Property>
+          </Properties>
           <Events>
-            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelBeranda4MouseEntered"/>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelBeranda4MouseExited"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelPrestasiMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelPrestasiMouseExited"/>
           </Events>
 
           <Layout>
@@ -343,9 +382,9 @@
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="pnLine4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="icon3" min="-2" pref="46" max="-2" attributes="0"/>
+                      <Component id="iconPrestasi" min="-2" pref="46" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="beranda3" min="-2" pref="181" max="-2" attributes="0"/>
+                      <Component id="prestasi" min="-2" pref="181" max="-2" attributes="0"/>
                       <EmptySpace pref="16" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -355,8 +394,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="icon3" alignment="3" pref="48" max="32767" attributes="0"/>
-                          <Component id="beranda3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="iconPrestasi" alignment="3" pref="48" max="32767" attributes="0"/>
+                          <Component id="prestasi" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="pnLine4" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -366,6 +405,11 @@
           </Layout>
           <SubComponents>
             <Container class="javax.swing.JPanel" name="pnLine4">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="f0" green="f0" red="f0" type="rgb"/>
+                </Property>
+              </Properties>
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -380,7 +424,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Component class="javax.swing.JLabel" name="icon3">
+            <Component class="javax.swing.JLabel" name="iconPrestasi">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/images/thropy_cup_winner_medal_sport_icon_228549.png"/>
@@ -391,10 +435,11 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="icon3MouseExited"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="iconPrestasiMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="iconPrestasiMouseExited"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="beranda3">
+            <Component class="javax.swing.JLabel" name="prestasi">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="SansSerif" size="14" style="1"/>
@@ -402,16 +447,21 @@
                 <Property name="text" type="java.lang.String" value="Prestasi"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="beranda3MouseEntered"/>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="beranda3MouseExited"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="prestasiMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="prestasiMouseExited"/>
               </Events>
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="panelBeranda5">
+        <Container class="javax.swing.JPanel" name="panelPembayaran">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f0" green="f0" red="f0" type="rgb"/>
+            </Property>
+          </Properties>
           <Events>
-            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelBeranda5MouseEntered"/>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelBeranda5MouseExited"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelPembayaranMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelPembayaranMouseExited"/>
           </Events>
 
           <Layout>
@@ -421,9 +471,9 @@
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="pnLine5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="icon4" min="-2" pref="52" max="-2" attributes="0"/>
+                      <Component id="IconPembayaran" min="-2" pref="52" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="beranda4" min="-2" pref="181" max="-2" attributes="0"/>
+                      <Component id="pembayaran" min="-2" pref="181" max="-2" attributes="0"/>
                       <EmptySpace pref="16" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -432,15 +482,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="pnLine5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="icon4" alignment="3" pref="48" max="32767" attributes="0"/>
-                              <Component id="beranda4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="IconPembayaran" alignment="3" pref="48" max="32767" attributes="0"/>
+                          <Component id="pembayaran" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnLine5" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -449,6 +494,11 @@
           </Layout>
           <SubComponents>
             <Container class="javax.swing.JPanel" name="pnLine5">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="f0" green="f0" red="f0" type="rgb"/>
+                </Property>
+              </Properties>
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -458,12 +508,12 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="36" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Component class="javax.swing.JLabel" name="icon4">
+            <Component class="javax.swing.JLabel" name="IconPembayaran">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/images/dollar-coin-money_icon-icons.com_56177.png"/>
@@ -474,10 +524,11 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="icon4MouseExited"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="IconPembayaranMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="IconPembayaranMouseExited"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="beranda4">
+            <Component class="javax.swing.JLabel" name="pembayaran">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="SansSerif" size="14" style="1"/>
@@ -485,16 +536,21 @@
                 <Property name="text" type="java.lang.String" value="Pembayaran"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="beranda4MouseEntered"/>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="beranda4MouseExited"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pembayaranMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pembayaranMouseExited"/>
               </Events>
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="panelBeranda6">
+        <Container class="javax.swing.JPanel" name="panelFinalisasi">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f0" green="f0" red="f0" type="rgb"/>
+            </Property>
+          </Properties>
           <Events>
-            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelBeranda6MouseEntered"/>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelBeranda6MouseExited"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelFinalisasiMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelFinalisasiMouseExited"/>
           </Events>
 
           <Layout>
@@ -504,9 +560,9 @@
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="pnLine6" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="icon5" min="-2" pref="52" max="-2" attributes="0"/>
+                      <Component id="iconFinalisasi" min="-2" pref="52" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="beranda5" min="-2" pref="181" max="-2" attributes="0"/>
+                      <Component id="finalisasi" min="-2" pref="181" max="-2" attributes="0"/>
                       <EmptySpace pref="16" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -516,8 +572,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="icon5" alignment="3" pref="48" max="32767" attributes="0"/>
-                          <Component id="beranda5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="iconFinalisasi" alignment="3" pref="48" max="32767" attributes="0"/>
+                          <Component id="finalisasi" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="pnLine6" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -527,6 +583,11 @@
           </Layout>
           <SubComponents>
             <Container class="javax.swing.JPanel" name="pnLine6">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="f0" green="f0" red="f0" type="rgb"/>
+                </Property>
+              </Properties>
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -541,7 +602,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Component class="javax.swing.JLabel" name="icon5">
+            <Component class="javax.swing.JLabel" name="iconFinalisasi">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/images/black-check-box-with-white-check_icon-icons.com_72859.png"/>
@@ -552,10 +613,11 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="icon5MouseExited"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="iconFinalisasiMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="iconFinalisasiMouseExited"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="beranda5">
+            <Component class="javax.swing.JLabel" name="finalisasi">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="SansSerif" size="14" style="1"/>
@@ -563,16 +625,21 @@
                 <Property name="text" type="java.lang.String" value="FInalisasi"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="beranda5MouseEntered"/>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="beranda5MouseExited"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="finalisasiMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="finalisasiMouseExited"/>
               </Events>
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="panelBeranda7">
+        <Container class="javax.swing.JPanel" name="panelLogout">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f0" green="f0" red="f0" type="rgb"/>
+            </Property>
+          </Properties>
           <Events>
-            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelBeranda7MouseEntered"/>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelBeranda7MouseExited"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelLogoutMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelLogoutMouseExited"/>
           </Events>
 
           <Layout>
@@ -582,9 +649,9 @@
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="pnLine7" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="icon6" min="-2" pref="52" max="-2" attributes="0"/>
+                      <Component id="iconLogout" min="-2" pref="52" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="beranda6" min="-2" pref="181" max="-2" attributes="0"/>
+                      <Component id="logout" min="-2" pref="181" max="-2" attributes="0"/>
                       <EmptySpace pref="16" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -594,8 +661,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="icon6" alignment="3" pref="48" max="32767" attributes="0"/>
-                          <Component id="beranda6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="iconLogout" alignment="3" pref="48" max="32767" attributes="0"/>
+                          <Component id="logout" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="pnLine7" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -605,6 +672,11 @@
           </Layout>
           <SubComponents>
             <Container class="javax.swing.JPanel" name="pnLine7">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="f0" green="f0" red="f0" type="rgb"/>
+                </Property>
+              </Properties>
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -619,7 +691,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Component class="javax.swing.JLabel" name="icon6">
+            <Component class="javax.swing.JLabel" name="iconLogout">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/images/power_on_off_log_out_exit_icon_141949.png"/>
@@ -630,10 +702,11 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="icon6MouseExited"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="iconLogoutMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="iconLogoutMouseExited"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="beranda6">
+            <Component class="javax.swing.JLabel" name="logout">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="SansSerif" size="14" style="1"/>
@@ -641,16 +714,21 @@
                 <Property name="text" type="java.lang.String" value="Logout"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="beranda6MouseEntered"/>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="beranda6MouseExited"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="logoutMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="logoutMouseExited"/>
               </Events>
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="panelBeranda8">
+        <Container class="javax.swing.JPanel" name="panelInformasi">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f0" green="f0" red="f0" type="rgb"/>
+            </Property>
+          </Properties>
           <Events>
-            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelBeranda8MouseEntered"/>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelBeranda8MouseExited"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelInformasiMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="panelInformasiMouseExited"/>
           </Events>
 
           <Layout>
@@ -660,9 +738,9 @@
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="pnLine8" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="icon7" min="-2" pref="46" max="-2" attributes="0"/>
+                      <Component id="iconinformasi" min="-2" pref="46" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="beranda7" min="-2" pref="181" max="-2" attributes="0"/>
+                      <Component id="informasi" min="-2" pref="181" max="-2" attributes="0"/>
                       <EmptySpace pref="16" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -672,8 +750,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="icon7" alignment="3" pref="48" max="32767" attributes="0"/>
-                          <Component id="beranda7" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="iconinformasi" alignment="3" pref="48" max="32767" attributes="0"/>
+                          <Component id="informasi" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="pnLine8" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -683,6 +761,11 @@
           </Layout>
           <SubComponents>
             <Container class="javax.swing.JPanel" name="pnLine8">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="f0" green="f0" red="f0" type="rgb"/>
+                </Property>
+              </Properties>
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -697,7 +780,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Component class="javax.swing.JLabel" name="icon7">
+            <Component class="javax.swing.JLabel" name="iconinformasi">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/images/info_information_icon_178159.png"/>
@@ -708,19 +791,20 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="icon7MouseExited"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="iconinformasiMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="iconinformasiMouseExited"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="beranda7">
+            <Component class="javax.swing.JLabel" name="informasi">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="SansSerif" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Bantuan"/>
+                <Property name="text" type="java.lang.String" value="Informasi"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="beranda7MouseEntered"/>
-                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="beranda7MouseExited"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="informasiMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="informasiMouseExited"/>
               </Events>
             </Component>
           </SubComponents>

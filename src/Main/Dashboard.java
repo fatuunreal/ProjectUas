@@ -423,7 +423,7 @@ public class Dashboard extends javax.swing.JFrame {
         });
 
         beranda5.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        beranda5.setText("Status Pendaftaran");
+        beranda5.setText("FInalisasi");
         beranda5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 beranda5MouseEntered(evt);

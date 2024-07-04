@@ -560,7 +560,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="SansSerif" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Status Pendaftaran"/>
+                <Property name="text" type="java.lang.String" value="FInalisasi"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="beranda5MouseEntered"/>

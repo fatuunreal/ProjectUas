@@ -1,7 +1,9 @@
 package Front;
 import javax.swing.JOptionPane;
 import models.Users;
+import models.User;
 import Main.Dashboard;
+import Main.Session;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -17,6 +19,7 @@ public class Menu extends javax.swing.JFrame {
     /**
      * Creates new form menu
      */
+    private String uname;
     public Menu() {
         initComponents();
     }
@@ -160,21 +163,31 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasukActionPerformed
-        Users user = new Users();
+       Users userUtil = new Users();
         String uname = txtUsername.getText();
         String paswd = String.valueOf(txtPass.getPassword());
-        int count = user.checkUser(uname, paswd);
-        if(count == 0){
-            JOptionPane.showMessageDialog(null,"User tidak ditemukan");
-        }
-        else{
-            JOptionPane.showMessageDialog(null,"LOGIN BERHASIL");
-            Dashboard dashboard = new Dashboard(uname);
-            dashboard.setVisible(true);
+
+        System.out.println("Attempting login for username: " + uname);
+
+        User user = userUtil.checkUser(uname, paswd);
+
+        if (user == null) {
+            JOptionPane.showMessageDialog(null, "User tidak ditemukan");
+            System.out.println("Login failed: User not found");
+        } else {
+            JOptionPane.showMessageDialog(null, "LOGIN BERHASIL");
+            System.out.println("Login successful: User ID " + user.getId() + ", Username " + user.getUsername());
+
+            Session.getInstance().setUser(user); // Set the user in the Session
+            new Dashboard().setVisible(true);
             this.dispose();
         }
+        
     }//GEN-LAST:event_btnMasukActionPerformed
-
+    
+    public String getUser(){
+        return uname;
+    }
     private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsernameActionPerformed

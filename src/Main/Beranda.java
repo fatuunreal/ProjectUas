@@ -3,21 +3,28 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package Main;
-
+import Front.Menu; //mengambil nilai
+import javax.swing.JLabel;
 /**
  *
  * @author fatur
  */
 public class Beranda extends javax.swing.JPanel {
-
+   
+    
     /**
      * Creates new form Biodata
      */
+   
     public Beranda() {
         initComponents();
+
+        
         //menampilan nama
     }
     
+  
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,37 +35,63 @@ public class Beranda extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabelUsername = new javax.swing.JLabel();
+        munculDisini = new javax.swing.JLabel();
+        muncul = new javax.swing.JTextField();
 
         setLayout(new java.awt.CardLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabelUsername.setText("WELCOME");
+        munculDisini.setText("jLabel1");
+
+        muncul.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                munculActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(273, 273, 273)
-                .addComponent(jLabelUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(260, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(241, 241, 241)
+                        .addComponent(munculDisini))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(275, 275, 275)
+                        .addComponent(muncul, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(231, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabelUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(451, Short.MAX_VALUE))
+                .addGap(170, 170, 170)
+                .addComponent(munculDisini)
+                .addGap(58, 58, 58)
+                .addComponent(muncul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(218, Short.MAX_VALUE))
         );
 
         add(jPanel1, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
+    public JLabel getMunculDisini() {
+        return munculDisini;
+    }
+    
+    public void setUsername(String uname){
+        munculDisini.setText(uname);
+    }
+    private void munculActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_munculActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_munculActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabelUsername;
     private javax.swing.JPanel jPanel1;
+    public static javax.swing.JTextField muncul;
+    public javax.swing.JLabel munculDisini;
     // End of variables declaration//GEN-END:variables
 }

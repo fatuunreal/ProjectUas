@@ -1,14 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package models;
+
 import java.sql.*;
 
-/**
- *
- * @author fatur
- */
 public class Users {
     static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     static final String DB_URL = "jdbc:mysql://127.0.0.1/uas?autoReconnect=true&useSSL=false";
@@ -18,29 +11,45 @@ public class Users {
     static Connection conn;
     static Statement stmt;
     static ResultSet rs;
-    
-    public int checkUser(String uname, String paswd){
-       try{
-            Class.forName(JDBC_DRIVER);	   
+
+    public User checkUser(String uname, String paswd) {
+        User user = null;
+        try {
+            System.out.println("Loading JDBC driver...");
+            Class.forName(JDBC_DRIVER);
+
+            System.out.println("Connecting to database...");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            stmt = conn.createStatement();
-            String sql = "SELECT * FROM login WHERE username=? AND password=?";
+            System.out.println("Connected to database.");
+
+            String sql = "SELECT id, username FROM login WHERE username = ? AND password = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1,uname);
-            ps.setString(2,paswd);
-            ps.execute();
+            ps.setString(1, uname);
+            ps.setString(2, paswd);
+
+            System.out.println("Executing query...");
             rs = ps.executeQuery();
-            int count = 0;
-           while(rs.next()){
-               count++;
-           }
-           return count;
-            
-       }
-       catch(Exception e)
-       {
-           e.printStackTrace();
-           return 0;
-       }
+
+            if (rs.next()) {
+                System.out.println("User found.");
+                String id = rs.getString("id");
+                String username = rs.getString("username");
+                user = new User(id, username);
+            } else {
+                System.out.println("User not found.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // Close resources
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+        return user;
     }
 }

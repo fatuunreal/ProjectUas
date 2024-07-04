@@ -10,11 +10,15 @@ import java.awt.Color;
  */
 public class Dashboard extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Dashboard
-     */
-    public Dashboard() {
+    private String username;
+    
+    public Dashboard(String username) {
+        this.username = username;
         initComponents();
+        panelUtama.removeAll();
+        panelUtama.add(new Beranda());
+        panelUtama.repaint();
+        panelUtama.revalidate();
     }
 
     /**
@@ -61,6 +65,7 @@ public class Dashboard extends javax.swing.JFrame {
         pnLine8 = new javax.swing.JPanel();
         iconinformasi = new javax.swing.JLabel();
         informasi = new javax.swing.JLabel();
+        lblUsername = new javax.swing.JLabel();
         panelKanan = new javax.swing.JPanel();
         panelAtas = new javax.swing.JPanel();
         panalDasar = new javax.swing.JPanel();
@@ -77,6 +82,9 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
         panelBeranda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelBerandaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelBerandaMouseEntered(evt);
             }
@@ -147,6 +155,9 @@ public class Dashboard extends javax.swing.JFrame {
 
         panelBiodata.setBackground(new java.awt.Color(240, 240, 240));
         panelBiodata.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelBiodataMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelBiodataMouseEntered(evt);
             }
@@ -183,6 +194,9 @@ public class Dashboard extends javax.swing.JFrame {
         biodata.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         biodata.setText("Biodata");
         biodata.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                biodataMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 biodataMouseEntered(evt);
             }
@@ -635,24 +649,31 @@ public class Dashboard extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        lblUsername.setText("Hai");
+
         javax.swing.GroupLayout panelKiriLayout = new javax.swing.GroupLayout(panelKiri);
         panelKiri.setLayout(panelKiriLayout);
         panelKiriLayout.setHorizontalGroup(
             panelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelKiriLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(logoDInus)
-                    .addComponent(panelBeranda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelBiodata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelPendaftaran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelPrestasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelPembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelFinalisasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelLogout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelInformasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
+                .addGroup(panelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelKiriLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(panelKiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(logoDInus)
+                            .addComponent(panelBeranda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panelBiodata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panelPendaftaran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panelPrestasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panelPembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panelFinalisasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panelLogout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panelInformasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1))
+                    .addGroup(panelKiriLayout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addComponent(lblUsername)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelKiriLayout.setVerticalGroup(
@@ -679,7 +700,9 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(panelFinalisasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelInformasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblUsername)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addComponent(panelLogout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
         );
@@ -705,16 +728,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         panalDasar.setBackground(new java.awt.Color(250, 250, 250));
 
-        javax.swing.GroupLayout panelUtamaLayout = new javax.swing.GroupLayout(panelUtama);
-        panelUtama.setLayout(panelUtamaLayout);
-        panelUtamaLayout.setHorizontalGroup(
-            panelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 709, Short.MAX_VALUE)
-        );
-        panelUtamaLayout.setVerticalGroup(
-            panelUtamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 585, Short.MAX_VALUE)
-        );
+        panelUtama.setLayout(new java.awt.BorderLayout());
 
         javax.swing.GroupLayout panalDasarLayout = new javax.swing.GroupLayout(panalDasar);
         panalDasar.setLayout(panalDasarLayout);
@@ -722,15 +736,15 @@ public class Dashboard extends javax.swing.JFrame {
             panalDasarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panalDasarLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(panelUtama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addComponent(panelUtama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(14, 14, 14))
         );
         panalDasarLayout.setVerticalGroup(
             panalDasarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panalDasarLayout.createSequentialGroup()
+            .addGroup(panalDasarLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(panelUtama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addComponent(panelUtama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(8, 8, 8))
         );
 
         panelKanan.add(panalDasar, java.awt.BorderLayout.CENTER);
@@ -985,6 +999,35 @@ public class Dashboard extends javax.swing.JFrame {
         panelLogout.setBackground(new Color(255, 0, 0));
     }//GEN-LAST:event_iconLogoutMouseEntered
 
+    private void biodataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_biodataMouseClicked
+        biodata.setBackground(new Color(89, 89, 89));
+        panelBiodata.setBackground(new Color(89, 89, 89));
+        
+        panelUtama.removeAll();
+        panelUtama.add(new Beranda());
+        panelUtama.repaint();
+        panelUtama.revalidate();
+    }//GEN-LAST:event_biodataMouseClicked
+
+    private void panelBiodataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBiodataMouseClicked
+        biodata.setBackground(new Color(89, 89, 89));
+        panelBiodata.setBackground(new Color(89, 89, 89));
+        panelUtama.removeAll();
+        panelUtama.add(new Beranda());
+        panelUtama.repaint();
+        panelUtama.revalidate();
+    }//GEN-LAST:event_panelBiodataMouseClicked
+
+    private void panelBerandaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBerandaMouseClicked
+        beranda.setBackground(new Color(89, 89, 89));
+        panelBeranda.setBackground(new Color(89, 89, 89));
+        
+        panelUtama.removeAll();
+        panelUtama.add(new Beranda());
+        panelUtama.repaint();
+        panelUtama.revalidate();
+    }//GEN-LAST:event_panelBerandaMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1034,6 +1077,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel iconinformasi;
     private javax.swing.JLabel informasi;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblUsername;
     private javax.swing.JLabel logoDInus;
     private javax.swing.JLabel logout;
     private javax.swing.JPanel panalDasar;

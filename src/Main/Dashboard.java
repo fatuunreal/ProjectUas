@@ -239,6 +239,9 @@ public class Dashboard extends javax.swing.JFrame {
 
         panelPendaftaran.setBackground(new java.awt.Color(240, 240, 240));
         panelPendaftaran.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelPendaftaranMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelPendaftaranMouseEntered(evt);
             }
@@ -309,6 +312,9 @@ public class Dashboard extends javax.swing.JFrame {
 
         panelPrestasi.setBackground(new java.awt.Color(240, 240, 240));
         panelPrestasi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelPrestasiMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelPrestasiMouseEntered(evt);
             }
@@ -379,6 +385,9 @@ public class Dashboard extends javax.swing.JFrame {
 
         panelPembayaran.setBackground(new java.awt.Color(240, 240, 240));
         panelPembayaran.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelPembayaranMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelPembayaranMouseEntered(evt);
             }
@@ -449,6 +458,9 @@ public class Dashboard extends javax.swing.JFrame {
 
         panelFinalisasi.setBackground(new java.awt.Color(240, 240, 240));
         panelFinalisasi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelFinalisasiMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelFinalisasiMouseEntered(evt);
             }
@@ -589,6 +601,9 @@ public class Dashboard extends javax.swing.JFrame {
 
         panelInformasi.setBackground(new java.awt.Color(240, 240, 240));
         panelInformasi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelInformasiMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelInformasiMouseEntered(evt);
             }
@@ -744,6 +759,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         panalDasar.setBackground(new java.awt.Color(250, 250, 250));
 
+        panelUtama.setRequestFocusEnabled(false);
         panelUtama.setLayout(new java.awt.BorderLayout());
 
         javax.swing.GroupLayout panalDasarLayout = new javax.swing.GroupLayout(panalDasar);
@@ -752,7 +768,7 @@ public class Dashboard extends javax.swing.JFrame {
             panalDasarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panalDasarLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(panelUtama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelUtama, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
                 .addGap(14, 14, 14))
         );
         panalDasarLayout.setVerticalGroup(
@@ -1029,7 +1045,7 @@ public class Dashboard extends javax.swing.JFrame {
         biodata.setBackground(new Color(89, 89, 89));
         panelBiodata.setBackground(new Color(89, 89, 89));
         panelUtama.removeAll();
-        panelUtama.add(new Beranda());
+        panelUtama.add(new Biodata());
         panelUtama.repaint();
         panelUtama.revalidate();
     }//GEN-LAST:event_panelBiodataMouseClicked
@@ -1043,6 +1059,56 @@ public class Dashboard extends javax.swing.JFrame {
         panelUtama.repaint();
         panelUtama.revalidate();
     }//GEN-LAST:event_panelBerandaMouseClicked
+
+    private void panelPendaftaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPendaftaranMouseClicked
+        beranda.setBackground(new Color(89, 89, 89));
+        panelBeranda.setBackground(new Color(89, 89, 89));
+        
+        panelUtama.removeAll();
+        panelUtama.add(new Pendaftaran());
+        panelUtama.repaint();
+        panelUtama.revalidate();
+    }//GEN-LAST:event_panelPendaftaranMouseClicked
+
+    private void panelPrestasiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPrestasiMouseClicked
+        beranda.setBackground(new Color(89, 89, 89));
+        panelBeranda.setBackground(new Color(89, 89, 89));
+        
+        panelUtama.removeAll();
+        panelUtama.add(new Prestasi());
+        panelUtama.repaint();
+        panelUtama.revalidate();
+    }//GEN-LAST:event_panelPrestasiMouseClicked
+
+    private void panelPembayaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPembayaranMouseClicked
+        beranda.setBackground(new Color(89, 89, 89));
+        panelBeranda.setBackground(new Color(89, 89, 89));
+        
+        panelUtama.removeAll();
+        panelUtama.add(new Pembayaran());
+        panelUtama.repaint();
+        panelUtama.revalidate();
+    }//GEN-LAST:event_panelPembayaranMouseClicked
+
+    private void panelFinalisasiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelFinalisasiMouseClicked
+        beranda.setBackground(new Color(89, 89, 89));
+        panelBeranda.setBackground(new Color(89, 89, 89));
+        
+        panelUtama.removeAll();
+        panelUtama.add(new Finalisasi());
+        panelUtama.repaint();
+        panelUtama.revalidate();
+    }//GEN-LAST:event_panelFinalisasiMouseClicked
+
+    private void panelInformasiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelInformasiMouseClicked
+        beranda.setBackground(new Color(89, 89, 89));
+        panelBeranda.setBackground(new Color(89, 89, 89));
+        
+        panelUtama.removeAll();
+        panelUtama.add(new Informasi());
+        panelUtama.repaint();
+        panelUtama.revalidate();
+    }//GEN-LAST:event_panelInformasiMouseClicked
 
     /**
      * @param args the command line arguments

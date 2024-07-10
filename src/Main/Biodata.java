@@ -372,7 +372,7 @@ public class Biodata extends javax.swing.JPanel {
     }//GEN-LAST:event_btnUpFotoActionPerformed
 
     private void txtAlamatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAlamatActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtAlamatActionPerformed
 
     private void btnKirimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKirimActionPerformed

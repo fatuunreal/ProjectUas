@@ -3,38 +3,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package Main;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.User;
 import com.toedter.calendar.JDateChooser;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
-
+import java.sql.*;
+import java.text.SimpleDateFormat;
 /**
  *
  * @author fatur
  */
 public class Biodata extends javax.swing.JPanel {
-
+    
     public static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     public static final String DB_URL = "jdbc:mysql://127.0.0.1/uas?autoReconnect=true&useSSL=false";
     public static final String USER = "root";
     public static final String PASS = "";
 
-    public static Connection conn;
+    public static Connection conn = null;
     public static Statement stmt;
     public static ResultSet rs;
        
@@ -82,12 +70,7 @@ public class Biodata extends javax.swing.JPanel {
         txtNomorOrtu = new javax.swing.JTextField();
         txtSekolah = new javax.swing.JTextField();
         date = new com.toedter.calendar.JDateChooser();
-        jLabel12 = new javax.swing.JLabel();
-        btnBrowse = new javax.swing.JButton();
-        btnEdit = new javax.swing.JButton();
         btnKirim = new javax.swing.JButton();
-        lblPic = new javax.swing.JLabel();
-        btnUpFoto = new javax.swing.JButton();
         txtAlamat = new javax.swing.JTextField();
 
         setLayout(new java.awt.CardLayout());
@@ -164,32 +147,10 @@ public class Biodata extends javax.swing.JPanel {
             }
         });
 
-        jLabel12.setText("Foto");
-
-        btnBrowse.setText("Browse");
-        btnBrowse.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBrowseActionPerformed(evt);
-            }
-        });
-
-        btnEdit.setText("Edit");
-
         btnKirim.setText("Kirim");
         btnKirim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKirimActionPerformed(evt);
-            }
-        });
-
-        lblPic.setText("jLabel13");
-        lblPic.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 0, 255)));
-        lblPic.setPreferredSize(new java.awt.Dimension(40, 60));
-
-        btnUpFoto.setText("Upload Foto");
-        btnUpFoto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpFotoActionPerformed(evt);
             }
         });
 
@@ -204,54 +165,39 @@ public class Biodata extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(298, 298, 298)
+                .addComponent(lblID)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(103, 103, 103)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(298, 298, 298)
-                        .addComponent(lblID)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(btnEdit)
-                                        .addGap(32, 32, 32)
-                                        .addComponent(btnKirim, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel9)
-                                            .addComponent(jLabel10)
-                                            .addComponent(jLabel11)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel12))
-                                        .addGap(119, 119, 119)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtNik, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(btnUpFoto)
-                                                    .addComponent(btnBrowse, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(49, 49, 49)
-                                                .addComponent(lblPic, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(txtAlamat, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
-                                                .addComponent(date, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(txtTL, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
-                                                .addComponent(txtNO, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
-                                                .addComponent(txtOrtu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
-                                                .addComponent(txtNomorOrtu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
-                                                .addComponent(txtSekolah, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)))))))))
-                .addContainerGap(119, Short.MAX_VALUE))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4))
+                        .addGap(119, 119, 119)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNik, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAlamat)
+                            .addComponent(txtEmail)
+                            .addComponent(date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtTL)
+                            .addComponent(txtNO)
+                            .addComponent(txtOrtu)
+                            .addComponent(txtNomorOrtu)
+                            .addComponent(txtSekolah)
+                            .addComponent(btnKirim, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(122, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,85 +244,19 @@ public class Biodata extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(txtAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnBrowse)
-                            .addComponent(jLabel12))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnUpFoto)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lblPic, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEdit)
-                    .addComponent(btnKirim))
-                .addGap(27, 27, 27))
+                .addGap(30, 30, 30)
+                .addComponent(btnKirim)
+                .addContainerGap(135, Short.MAX_VALUE))
         );
 
         add(jPanel1, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNikActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNikActionPerformed
-
-    private void txtTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTLActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTLActionPerformed
-
-    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailActionPerformed
-
-    private void txtNOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNOActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNOActionPerformed
-
-    private void txtOrtuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrtuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtOrtuActionPerformed
-
-    private void txtNomorOrtuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomorOrtuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomorOrtuActionPerformed
-
-    private void txtSekolahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSekolahActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSekolahActionPerformed
-
-    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameActionPerformed
-
-    private void btnBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseActionPerformed
-        JFileChooser jf = new JFileChooser();
-        jf.showOpenDialog(null);
-        File f = jf.getSelectedFile();
-        String path = f.getAbsolutePath();
-        try{
-            BufferedImage bi = ImageIO.read(new File(path));
-            Image img = bi.getScaledInstance(134, 171, Image.SCALE_SMOOTH);
-            ImageIcon ii = new ImageIcon(img);
-            lblPic.setIcon(ii);
-        }catch(IOException ex){
-            Logger.getLogger(Biodata.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnBrowseActionPerformed
-
-    private void btnUpFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpFotoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUpFotoActionPerformed
-
     private void txtAlamatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAlamatActionPerformed
-        
+
     }//GEN-LAST:event_txtAlamatActionPerformed
 
     private void btnKirimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKirimActionPerformed
-        
         User user = Session.getInstance().getUser();
         String id = user.getId();
         String namaLengkap = txtName.getText();
@@ -390,43 +270,82 @@ public class Biodata extends javax.swing.JPanel {
         String namaOrtu = txtOrtu.getText();
         String noTelpOrtu = txtNomorOrtu.getText();
         String sekolahAsal = txtSekolah.getText();
-        String Alamat = txtAlamat.getText();
-        if(id.isEmpty() || namaLengkap.isEmpty() || nik.isEmpty() || tempatLahir.isEmpty() || tanggalLahir.isEmpty() || email.isEmpty() 
-                || noTelp.isEmpty() || namaOrtu.isEmpty() ||  noTelpOrtu.isEmpty() ||  sekolahAsal.isEmpty() || Alamat.isEmpty() ){
+        String alamat = txtAlamat.getText();
+
+        if (id.isEmpty() || namaLengkap.isEmpty() || nik.isEmpty() || tempatLahir.isEmpty() || tanggalLahir.isEmpty() || email.isEmpty()
+            || noTelp.isEmpty() || namaOrtu.isEmpty() || noTelpOrtu.isEmpty() || sekolahAsal.isEmpty() || alamat.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Semua harus di isi");
-        }else {
-            try{
-            Class.forName(JDBC_DRIVER);
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            String sql = "INSERT INTO biodata (id, namaLengkap, nik, tempatLahir, tanggalLahir, email, noTelp, namaOrtu, noTelpOrtu, sekolahAsal, Alamat) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, id);
-            ps.setString(2, namaLengkap);
-            ps.setString(3, nik);
-            ps.setString(4, tempatLahir);
-            ps.setString(5, tanggalLahir);
-            ps.setString(6, email);
-            ps.setString(7, noTelp);
-            ps.setString(8, namaOrtu);
-            ps.setString(9, noTelpOrtu);
-            ps.setString(10, sekolahAsal);
-            ps.setString(11, Alamat);  
-            ps.executeUpdate();
-            ps.close();
-        }catch()
-        
+        } else {
+            try {
+                Class.forName(JDBC_DRIVER);
+                conn = DriverManager.getConnection(DB_URL, USER, PASS);
+                String sql = "INSERT INTO biodata (id, namaLengkap, nik, tempatLahir, tanggalLahir, email, noTelp, namaOrtu, noTelpOrtu, sekolahAsal, alamat) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+                PreparedStatement ps = conn.prepareStatement(sql);
+                ps.setString(1, id);
+                ps.setString(2, namaLengkap);
+                ps.setString(3, nik);
+                ps.setString(4, tempatLahir);
+                ps.setString(5, tanggalLahir);
+                ps.setString(6, email);
+                ps.setString(7, noTelp);
+                ps.setString(8, namaOrtu);
+                ps.setString(9, noTelpOrtu);
+                ps.setString(10, sekolahAsal);
+                ps.setString(11, alamat);
+                ps.executeUpdate();
+                ps.close();
+                JOptionPane.showMessageDialog(null, "Data berhasil disimpan!");
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat menyimpan data!");
+            } finally {
+                try {
+                    if (conn != null) conn.close();
+                } catch (SQLException se) {
+                    se.printStackTrace();
+                }
+            }
+        }
     }//GEN-LAST:event_btnKirimActionPerformed
+
+    private void txtSekolahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSekolahActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSekolahActionPerformed
+
+    private void txtNomorOrtuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomorOrtuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomorOrtuActionPerformed
+
+    private void txtOrtuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrtuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtOrtuActionPerformed
+
+    private void txtNOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNOActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNOActionPerformed
+
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void txtTLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTLActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTLActionPerformed
+
+    private void txtNikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNikActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNikActionPerformed
+
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBrowse;
-    private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnKirim;
-    private javax.swing.JButton btnUpFoto;
     private com.toedter.calendar.JDateChooser date;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -437,7 +356,6 @@ public class Biodata extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblID;
-    private javax.swing.JLabel lblPic;
     private javax.swing.JTextField txtAlamat;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNO;

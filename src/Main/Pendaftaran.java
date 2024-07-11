@@ -3,20 +3,73 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package Main;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 /**
  *
  * @author fatur
  */
 public class Pendaftaran extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Pendaftaran
-     */
+    
     public Pendaftaran() {
         initComponents();
+        addActionListeners();
+    }
+    
+    private void addActionListeners() {
+        programStudi.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                updateLabels();
+            }
+        });
     }
 
+    private void updateLabels() {
+        String selectedProgram = (String) programStudi.getSelectedItem();
+
+        String programKode = "";
+        String programBiaya = "";
+
+        switch (selectedProgram) {
+            case "Teknik Informatika":
+                programKode = "A11";
+                programBiaya = "30.000.000";
+                break;
+            case "Sistem Informatika":
+                programKode = "A12";
+                programBiaya = "30.000.000";
+                break;
+            case "Desain Komunikasi Visual":
+                programKode = "A14";
+                programBiaya = "30.000.000";
+                break;
+            case "Ilmu Komunikasi":
+                programKode = "A15";
+                programBiaya = "25.000.000";
+                break;
+            case "Film dan Televisi":
+                programKode = "FTV01";
+                programBiaya = "17.500.000";
+                break;
+            case "Teknik Elektro":
+                programKode = "E11";
+                programBiaya = "15.500.000";
+                break;
+            case "Teknik Nuklir":
+                programKode = "E13";
+                programBiaya = "32.000.000";
+                break;
+            case "Teknik Industri":
+                programKode = "E12";
+                programBiaya = "15.000.000";
+                break;
+        }
+
+        kode.setText(programKode);
+        biaya.setText(programBiaya);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,10 +86,11 @@ public class Pendaftaran extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
+        programStudi = new javax.swing.JComboBox<>();
+        kode = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
-        jLabel7 = new javax.swing.JLabel();
+        biaya = new javax.swing.JLabel();
+        btnDaftar = new javax.swing.JButton();
 
         setLayout(new java.awt.CardLayout());
 
@@ -54,41 +108,45 @@ public class Pendaftaran extends javax.swing.JPanel {
 
         jLabel5.setText("Jenjang");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Teknik Informatika", "Sistem Informatika", "Desain Komunikasi Visual. Ilmu Komunikasi", "Film dan Televisi", "Teknik Elektro", "Teknik Nuklir", "Teknik Industri" }));
+        programStudi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Teknik Informatika", "Sistem Informatika", "Desain Komunikasi Visual", "Ilmu Komunikasi", "Film dan Televisi", "Teknik Elektro", "Teknik Nuklir", "Teknik Industri" }));
 
-        jLabel6.setText("jLabel6");
+        kode.setText("Kode");
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "D3", "D4", "S1", "S2", "S3" }));
 
-        jLabel7.setText("Biaya");
+        biaya.setText("Biaya");
+
+        btnDaftar.setText("DAFTAR");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(321, 321, 321)
                         .addComponent(jLabel2))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(111, 111, 111)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(66, 66, 66)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel1))
-                                .addGap(61, 61, 61)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6))))))
-                .addContainerGap(223, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnDaftar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addGap(66, 66, 66)
+                                    .addComponent(programStudi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel5)
+                                        .addComponent(jLabel1))
+                                    .addGap(61, 61, 61)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(biaya)
+                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(kode)))))))
+                .addContainerGap(318, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,11 +156,11 @@ public class Pendaftaran extends javax.swing.JPanel {
                 .addGap(50, 50, 50)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(programStudi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel6))
+                    .addComponent(kode))
                 .addGap(31, 31, 31)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -110,8 +168,10 @@ public class Pendaftaran extends javax.swing.JPanel {
                 .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel7))
-                .addContainerGap(344, Short.MAX_VALUE))
+                    .addComponent(biaya))
+                .addGap(35, 35, 35)
+                .addComponent(btnDaftar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(275, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, "card2");
@@ -121,16 +181,17 @@ public class Pendaftaran extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel biaya;
+    private javax.swing.JButton btnDaftar;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel kode;
+    private javax.swing.JComboBox<String> programStudi;
     // End of variables declaration//GEN-END:variables
 }

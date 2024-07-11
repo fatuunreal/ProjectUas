@@ -775,7 +775,7 @@ public class Dashboard extends javax.swing.JFrame {
             panalDasarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panalDasarLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(panelUtama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelUtama, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
                 .addGap(8, 8, 8))
         );
 

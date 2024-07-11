@@ -3,14 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package Main;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import models.User;
-import com.toedter.calendar.JDateChooser;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+
+
 /**
  *
  * @author fatur
@@ -25,20 +24,23 @@ public class Biodata extends javax.swing.JPanel {
     public static Connection conn = null;
     public static Statement stmt;
     public static ResultSet rs;
-       
-    
+  
     
     public Biodata() {
         initComponents();
         displayUserInfo();
-        
+        btnEdit.setEnabled(false);
     }
+    
     private void displayUserInfo() {
         User user = Session.getInstance().getUser();
         if (user != null) {
             lblID.setText("Input Data Diri : " + user.getId());
         }
     }
+ 
+    
+ 
     /*
     /**
      * This method is called from within the constructor to initialize the form.
@@ -72,6 +74,7 @@ public class Biodata extends javax.swing.JPanel {
         date = new com.toedter.calendar.JDateChooser();
         btnKirim = new javax.swing.JButton();
         txtAlamat = new javax.swing.JTextField();
+        btnEdit = new javax.swing.JButton();
 
         setLayout(new java.awt.CardLayout());
 
@@ -160,6 +163,8 @@ public class Biodata extends javax.swing.JPanel {
             }
         });
 
+        btnEdit.setText("Edit");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -196,7 +201,10 @@ public class Biodata extends javax.swing.JPanel {
                             .addComponent(txtOrtu)
                             .addComponent(txtNomorOrtu)
                             .addComponent(txtSekolah)
-                            .addComponent(btnKirim, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnKirim, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(122, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -245,7 +253,9 @@ public class Biodata extends javax.swing.JPanel {
                     .addComponent(jLabel6)
                     .addComponent(txtAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addComponent(btnKirim)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnKirim)
+                    .addComponent(btnEdit))
                 .addContainerGap(135, Short.MAX_VALUE))
         );
 
@@ -295,6 +305,22 @@ public class Biodata extends javax.swing.JPanel {
                 ps.executeUpdate();
                 ps.close();
                 JOptionPane.showMessageDialog(null, "Data berhasil disimpan!");
+                
+                // Disable text fields and button
+                txtName.setEnabled(false);
+                txtNik.setEnabled(false);
+                txtTL.setEnabled(false);
+                date.setEnabled(false);
+                txtEmail.setEnabled(false);
+                txtNO.setEnabled(false);
+                txtOrtu.setEnabled(false);
+                txtNomorOrtu.setEnabled(false);
+                txtSekolah.setEnabled(false);
+                txtAlamat.setEnabled(false);
+                btnKirim.setEnabled(false);
+                btnEdit.setEnabled(true);
+                
+           
             } catch (Exception e) {
                 e.printStackTrace();
                 JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat menyimpan data!");
@@ -307,7 +333,7 @@ public class Biodata extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_btnKirimActionPerformed
-
+    
     private void txtSekolahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSekolahActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSekolahActionPerformed
@@ -342,6 +368,7 @@ public class Biodata extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnKirim;
     private com.toedter.calendar.JDateChooser date;
     private javax.swing.JLabel jLabel10;

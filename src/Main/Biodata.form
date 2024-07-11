@@ -65,7 +65,11 @@
                               <Component id="txtOrtu" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtNomorOrtu" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtSekolah" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnKirim" alignment="1" min="-2" pref="113" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="btnEdit" max="32767" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="btnKirim" min="-2" pref="113" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace pref="122" max="32767" attributes="0"/>
                       </Group>
@@ -129,7 +133,10 @@
                       <Component id="txtAlamat" min="-2" pref="44" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="btnKirim" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnKirim" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnEdit" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace pref="135" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -245,6 +252,11 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAlamatActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnEdit">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Edit"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

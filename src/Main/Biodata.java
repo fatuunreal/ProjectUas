@@ -482,17 +482,17 @@ public class Biodata extends javax.swing.JPanel {
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         txtName.setEnabled(true);
-    txtNik.setEnabled(true);
-    txtTL.setEnabled(true);
-    date.setEnabled(true);
-    txtEmail.setEnabled(true);
-    txtNO.setEnabled(true);
-    txtOrtu.setEnabled(true);
-    txtNomorOrtu.setEnabled(true);
-    txtSekolah.setEnabled(true);
-    txtAlamat.setEnabled(true);
-    btnSimpan.setEnabled(true);
-    btnEdit.setEnabled(false);
+        txtNik.setEnabled(true);
+        txtTL.setEnabled(true);
+        date.setEnabled(true);
+        txtEmail.setEnabled(true);
+        txtNO.setEnabled(true);
+        txtOrtu.setEnabled(true);
+        txtNomorOrtu.setEnabled(true);
+        txtSekolah.setEnabled(true);
+        txtAlamat.setEnabled(true);
+        btnSimpan.setEnabled(true);
+        btnEdit.setEnabled(false);
     }//GEN-LAST:event_btnEditActionPerformed
 
 

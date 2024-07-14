@@ -143,9 +143,7 @@ public class Pendaftaran extends javax.swing.JPanel {
 
         txtKode.setText(programKode);
         txtBiaya.setText(programBiaya);
-        System.out.println("Selected Program: " + selectedProgram);
-        System.out.println("Program Kode: " + programKode);
-        System.out.println("Program Biaya: " + programBiaya);
+       
     }
     /**
      * This method is called from within the constructor to initialize the form.

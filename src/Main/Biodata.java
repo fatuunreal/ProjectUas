@@ -16,6 +16,8 @@ import java.text.SimpleDateFormat;
  */
 public class Biodata extends javax.swing.JPanel {
     
+
+    
     public static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     public static final String DB_URL = "jdbc:mysql://127.0.0.1/uas?autoReconnect=true&useSSL=false";
     public static final String USER = "root";
@@ -30,6 +32,7 @@ public class Biodata extends javax.swing.JPanel {
         initComponents();
         displayUserInfo();
         btnEdit.setEnabled(false);
+        loadData();
     }
     
     private void displayUserInfo() {
@@ -38,7 +41,89 @@ public class Biodata extends javax.swing.JPanel {
             lblID.setText("Input Data Diri : " + user.getId());
         }
     }
- 
+    
+
+    
+    private void loadData() {
+    User user = Session.getInstance().getUser();
+    if (user == null) {
+        System.out.println("User is null in loadData");
+        return;
+    }
+    String id = user.getId();
+    System.out.println("Loading data for ID: " + id);
+    
+    try {
+        Class.forName(JDBC_DRIVER);
+        conn = DriverManager.getConnection(DB_URL, USER, PASS);
+        String sql = "SELECT * FROM biodata WHERE id = ?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, id);
+        ResultSet rs = ps.executeQuery();
+        
+        if (rs.next()) {
+            System.out.println("Data found for ID: " + id);
+            txtName.setText(rs.getString("namaLengkap"));
+            txtNik.setText(rs.getString("nik"));
+            txtTL.setText(rs.getString("tempatLahir"));
+            
+            String dateString = rs.getString("tanggalLahir");
+            Date dateValue = new SimpleDateFormat("yyyy-MM-dd").parse(dateString);
+            date.setDate(dateValue);
+            
+            txtEmail.setText(rs.getString("email"));
+            txtNO.setText(rs.getString("noTelp"));
+            txtOrtu.setText(rs.getString("namaOrtu"));
+            txtNomorOrtu.setText(rs.getString("noTelpOrtu"));
+            txtSekolah.setText(rs.getString("sekolahAsal"));
+            txtAlamat.setText(rs.getString("alamat"));
+            
+            // Enable text fields and button
+            txtName.setEnabled(false);
+            txtNik.setEnabled(false);
+            txtTL.setEnabled(false);
+            date.setEnabled(false);
+            txtEmail.setEnabled(false);
+            txtNO.setEnabled(false);
+            txtOrtu.setEnabled(false);
+            txtNomorOrtu.setEnabled(false);
+            txtSekolah.setEnabled(false);
+            txtAlamat.setEnabled(false);
+            btnSimpan.setEnabled(false);
+            btnEdit.setEnabled(true);
+        } else {
+            System.out.println("No data found for ID: " + id);
+            // Enable text fields and button if no data is found
+            txtName.setEnabled(true);
+            txtNik.setEnabled(true);
+            txtTL.setEnabled(true);
+            date.setEnabled(true);
+            txtEmail.setEnabled(true);
+            txtNO.setEnabled(true);
+            txtOrtu.setEnabled(true);
+            txtNomorOrtu.setEnabled(true);
+            txtSekolah.setEnabled(true);
+            txtAlamat.setEnabled(true);
+            btnSimpan.setEnabled(true);
+            btnEdit.setEnabled(false);
+        }
+        
+        rs.close();
+        ps.close();
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat mengambil data!");
+    } finally {
+        try {
+            if (conn != null) conn.close();
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+    }
+}
+
+
+
     
  
     /*
@@ -72,7 +157,7 @@ public class Biodata extends javax.swing.JPanel {
         txtNomorOrtu = new javax.swing.JTextField();
         txtSekolah = new javax.swing.JTextField();
         date = new com.toedter.calendar.JDateChooser();
-        btnKirim = new javax.swing.JButton();
+        btnSimpan = new javax.swing.JButton();
         txtAlamat = new javax.swing.JTextField();
         btnEdit = new javax.swing.JButton();
 
@@ -150,10 +235,10 @@ public class Biodata extends javax.swing.JPanel {
             }
         });
 
-        btnKirim.setText("Kirim");
-        btnKirim.addActionListener(new java.awt.event.ActionListener() {
+        btnSimpan.setText("Simpan");
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKirimActionPerformed(evt);
+                btnSimpanActionPerformed(evt);
             }
         });
 
@@ -164,6 +249,11 @@ public class Biodata extends javax.swing.JPanel {
         });
 
         btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -204,7 +294,7 @@ public class Biodata extends javax.swing.JPanel {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnKirim, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(122, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -254,7 +344,7 @@ public class Biodata extends javax.swing.JPanel {
                     .addComponent(txtAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnKirim)
+                    .addComponent(btnSimpan)
                     .addComponent(btnEdit))
                 .addContainerGap(135, Short.MAX_VALUE))
         );
@@ -266,8 +356,12 @@ public class Biodata extends javax.swing.JPanel {
 
     }//GEN-LAST:event_txtAlamatActionPerformed
 
-    private void btnKirimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKirimActionPerformed
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
         User user = Session.getInstance().getUser();
+        if (user == null) {
+            System.out.println("User is null in btnKirimActionPerformed");
+            return;
+        }
         String id = user.getId();
         String namaLengkap = txtName.getText();
         String nik = txtNik.getText();
@@ -289,23 +383,43 @@ public class Biodata extends javax.swing.JPanel {
             try {
                 Class.forName(JDBC_DRIVER);
                 conn = DriverManager.getConnection(DB_URL, USER, PASS);
-                String sql = "INSERT INTO biodata (id, namaLengkap, nik, tempatLahir, tanggalLahir, email, noTelp, namaOrtu, noTelpOrtu, sekolahAsal, alamat) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+
+                // Check if the data already exists
+                String checkSql = "SELECT COUNT(*) FROM biodata WHERE id = ?";
+                int count;
+                try (PreparedStatement checkPs = conn.prepareStatement(checkSql)) {
+                    checkPs.setString(1, id);
+                    ResultSet rs = checkPs.executeQuery();
+                    rs.next();
+                    count = rs.getInt(1);
+                }
+
+                String sql;
+                if (count > 0) {
+                    // Update existing data
+                    sql = "UPDATE biodata SET namaLengkap = ?, nik = ?, tempatLahir = ?, tanggalLahir = ?, email = ?, noTelp = ?, namaOrtu = ?, noTelpOrtu = ?, sekolahAsal = ?, alamat = ? WHERE id = ?";
+                } else {
+                    // Insert new data
+                    sql = "INSERT INTO biodata (namaLengkap, nik, tempatLahir, tanggalLahir, email, noTelp, namaOrtu, noTelpOrtu, sekolahAsal, alamat, id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                }
+
                 PreparedStatement ps = conn.prepareStatement(sql);
-                ps.setString(1, id);
-                ps.setString(2, namaLengkap);
-                ps.setString(3, nik);
-                ps.setString(4, tempatLahir);
-                ps.setString(5, tanggalLahir);
-                ps.setString(6, email);
-                ps.setString(7, noTelp);
-                ps.setString(8, namaOrtu);
-                ps.setString(9, noTelpOrtu);
-                ps.setString(10, sekolahAsal);
-                ps.setString(11, alamat);
+                ps.setString(1, namaLengkap);
+                ps.setString(2, nik);
+                ps.setString(3, tempatLahir);
+                ps.setString(4, tanggalLahir);
+                ps.setString(5, email);
+                ps.setString(6, noTelp);
+                ps.setString(7, namaOrtu);
+                ps.setString(8, noTelpOrtu);
+                ps.setString(9, sekolahAsal);
+                ps.setString(10, alamat);
+                ps.setString(11, id);
                 ps.executeUpdate();
                 ps.close();
                 JOptionPane.showMessageDialog(null, "Data berhasil disimpan!");
-                
+                System.out.println("Data saved for ID: " + id);
+
                 // Disable text fields and button
                 txtName.setEnabled(false);
                 txtNik.setEnabled(false);
@@ -317,10 +431,9 @@ public class Biodata extends javax.swing.JPanel {
                 txtNomorOrtu.setEnabled(false);
                 txtSekolah.setEnabled(false);
                 txtAlamat.setEnabled(false);
-                btnKirim.setEnabled(false);
+                btnSimpan.setEnabled(false);
                 btnEdit.setEnabled(true);
-                
-           
+
             } catch (Exception e) {
                 e.printStackTrace();
                 JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat menyimpan data!");
@@ -332,7 +445,8 @@ public class Biodata extends javax.swing.JPanel {
                 }
             }
         }
-    }//GEN-LAST:event_btnKirimActionPerformed
+    }//GEN-LAST:event_btnSimpanActionPerformed
+    
     
     private void txtSekolahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSekolahActionPerformed
         // TODO add your handling code here:
@@ -366,10 +480,25 @@ public class Biodata extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
 
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        txtName.setEnabled(true);
+    txtNik.setEnabled(true);
+    txtTL.setEnabled(true);
+    date.setEnabled(true);
+    txtEmail.setEnabled(true);
+    txtNO.setEnabled(true);
+    txtOrtu.setEnabled(true);
+    txtNomorOrtu.setEnabled(true);
+    txtSekolah.setEnabled(true);
+    txtAlamat.setEnabled(true);
+    btnSimpan.setEnabled(true);
+    btnEdit.setEnabled(false);
+    }//GEN-LAST:event_btnEditActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEdit;
-    private javax.swing.JButton btnKirim;
+    private javax.swing.JButton btnSimpan;
     private com.toedter.calendar.JDateChooser date;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

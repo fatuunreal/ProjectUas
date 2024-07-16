@@ -3,9 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Main;
+import Front.Menu;
 import java.awt.Color;
+import javax.swing.JFrame;
 import models.User;
 import models.Users;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 /**
  *
  * @author fatur ++
@@ -15,19 +19,19 @@ public class Dashboard extends javax.swing.JFrame {
     
     public Dashboard() {
         initComponents();
-        displayUserInfo();
+        //displayUserInfo();
         panelUtama.removeAll();
         panelUtama.add(new Beranda());
         panelUtama.repaint();
         panelUtama.revalidate();
     }
-    private void displayUserInfo() {
-        User user = Session.getInstance().getUser();
-        if (user != null) {
-            lblUsername.setText("Username: " + user.getUsername());
-            lblUserId.setText("User ID: " + user.getId());
-        }
-    }
+//    private void displayUserInfo() {
+//        User user = Session.getInstance().getUser();
+//        if (user != null) {
+//            lblUsername.setText("Username: " + user.getUsername());
+//            lblUserId.setText("User ID: " + user.getId());
+//        }
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -74,10 +78,9 @@ public class Dashboard extends javax.swing.JFrame {
         informasi = new javax.swing.JLabel();
         panelKanan = new javax.swing.JPanel();
         panelAtas = new javax.swing.JPanel();
-        lblUsername = new javax.swing.JLabel();
-        lblUserId = new javax.swing.JLabel();
         panalDasar = new javax.swing.JPanel();
         panelUtama = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -531,6 +534,9 @@ public class Dashboard extends javax.swing.JFrame {
 
         panelLogout.setBackground(new java.awt.Color(240, 240, 240));
         panelLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelLogoutMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelLogoutMouseEntered(evt);
             }
@@ -727,32 +733,15 @@ public class Dashboard extends javax.swing.JFrame {
 
         panelAtas.setBackground(new java.awt.Color(0, 0, 255));
 
-        lblUsername.setBackground(new java.awt.Color(255, 255, 255));
-        lblUsername.setForeground(new java.awt.Color(255, 255, 255));
-        lblUsername.setText("jLabel2");
-
-        lblUserId.setForeground(new java.awt.Color(255, 255, 255));
-        lblUserId.setText("jLabel2");
-
         javax.swing.GroupLayout panelAtasLayout = new javax.swing.GroupLayout(panelAtas);
         panelAtas.setLayout(panelAtasLayout);
         panelAtasLayout.setHorizontalGroup(
             panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelAtasLayout.createSequentialGroup()
-                .addGap(195, 195, 195)
-                .addComponent(lblUsername)
-                .addGap(145, 145, 145)
-                .addComponent(lblUserId)
-                .addContainerGap(325, Short.MAX_VALUE))
+            .addGap(0, 739, Short.MAX_VALUE)
         );
         panelAtasLayout.setVerticalGroup(
             panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAtasLayout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addGroup(panelAtasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblUsername)
-                    .addComponent(lblUserId))
-                .addContainerGap())
+            .addGap(0, 42, Short.MAX_VALUE)
         );
 
         panelKanan.add(panelAtas, java.awt.BorderLayout.PAGE_START);
@@ -762,21 +751,31 @@ public class Dashboard extends javax.swing.JFrame {
         panelUtama.setRequestFocusEnabled(false);
         panelUtama.setLayout(new java.awt.BorderLayout());
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 710, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 610, Short.MAX_VALUE)
+        );
+
+        panelUtama.add(jPanel1, java.awt.BorderLayout.CENTER);
+
         javax.swing.GroupLayout panalDasarLayout = new javax.swing.GroupLayout(panalDasar);
         panalDasar.setLayout(panalDasarLayout);
         panalDasarLayout.setHorizontalGroup(
             panalDasarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panalDasarLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(panelUtama, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
-                .addGap(14, 14, 14))
+                .addContainerGap()
+                .addComponent(panelUtama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(23, 23, 23))
         );
         panalDasarLayout.setVerticalGroup(
             panalDasarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panalDasarLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(panelUtama, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
-                .addGap(8, 8, 8))
+            .addComponent(panelUtama, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         panelKanan.add(panalDasar, java.awt.BorderLayout.CENTER);
@@ -1110,6 +1109,20 @@ public class Dashboard extends javax.swing.JFrame {
         panelUtama.revalidate();
     }//GEN-LAST:event_panelInformasiMouseClicked
 
+    private void panelLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelLogoutMouseClicked
+        int confirm = JOptionPane.showConfirmDialog(this,
+            "Apakah Anda yakin ingin logout?",
+            "Konfirmasi Logout",
+            JOptionPane.YES_NO_OPTION);
+    
+    if (confirm == JOptionPane.YES_OPTION) {
+        // Menghapus sesi pengguna
+        Session.getInstance().setUser(null);
+
+        // Menampilkan kembali menu utama (Menu.java)
+        new Menu().setVisible(true);
+    }//GEN-LAST:event_panelLogoutMouseClicked
+    }       
     /**
      * @param args the command line arguments
      */
@@ -1159,8 +1172,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel iconinformasi;
     private javax.swing.JLabel informasi;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel lblUserId;
-    private javax.swing.JLabel lblUsername;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel logoDInus;
     private javax.swing.JLabel logout;
     private javax.swing.JPanel panalDasar;

@@ -5,7 +5,7 @@ public class Session {
     private User user;
 
     private Session() {
-        // Private constructor to prevent instantiation
+      
     }
 
     public static Session getInstance() {
@@ -22,4 +22,6 @@ public class Session {
     public void setUser(User user) {
         this.user = user;
     }
+    
+   
 }

@@ -3,28 +3,137 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package Main;
-import Front.Menu; //mengambil nilai
-import javax.swing.JLabel;
+import java.sql.*;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import models.User;
 /**
  *
  * @author fatur
  */
-public class Beranda extends javax.swing.JPanel {
+public final class Beranda extends javax.swing.JPanel {
    
     
-    /**
-     * Creates new form Biodata
-     */
-   
+    public static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
+    public static final String DB_URL = "jdbc:mysql://127.0.0.1/uas?autoReconnect=true&useSSL=false";
+    public static final String USER = "root";
+    public static final String PASS = "";
+
+    public static Connection conn = null;
+    public static Statement stmt;
+    public static ResultSet rs;
+        
+    
+    
     public Beranda() {
         initComponents();
-
-        
-        //menampilan nama
+        showtable();
+        loadData();
     }
     
-  
-   
+    private void loadData() {
+        User user = Session.getInstance().getUser();
+        if (user == null) {
+            System.out.println("User is null in loadData");
+            return;
+        }
+        String id = user.getId();
+        System.out.println("Loading data for ID: " + id);
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/uas", "root", "");
+            String sql = "SELECT * FROM pendaftaran WHERE id = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                System.out.println("Data found for ID: " + id);
+                infoProgStudi.setText(rs.getString("programStudi"));
+         
+
+                // Update lblProgStudi label
+                String programStudi = rs.getString("programStudi");
+                String jenjang = rs.getString("jenjang");
+                infoProgStudi.setText("Program Studi: "+ jenjang + " - " + programStudi);
+
+            
+            } else {
+                System.out.println("No data found for ID: " + id);
+
+           
+
+                // Clear lblProgStudi label
+                infoProgStudi.setText("");
+            }
+
+            rs.close();
+            ps.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat mengambil data!");
+        } finally {
+            try {
+                if (conn != null) conn.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+    }
+
+
+    public void showtable(){
+        User user = Session.getInstance().getUser();
+        if (user != null) {
+            String userId = user.getId();
+            try{
+                Class.forName(JDBC_DRIVER);	   
+                conn = DriverManager.getConnection(DB_URL, USER, PASS);
+                DefaultTableModel model = new DefaultTableModel();
+                model.addColumn("Agama");
+                model.addColumn("PPKN");
+                model.addColumn("Bahasa Indonesia");
+                model.addColumn("Matematika");
+                model.addColumn("Sejarah");
+                model.addColumn("Bhs Inggris");
+                model.addColumn("Seni Budaya");
+                model.addColumn("Bhs Jawa");
+                model.addColumn("Biologi");
+                model.addColumn("Fisika");
+                model.addColumn("Kimia");
+
+                String sql = "SELECT * FROM nilai_ijazah WHERE id = ?";
+                PreparedStatement stmt = conn.prepareStatement(sql);
+                stmt.setString(1, userId);
+                ResultSet rs = stmt.executeQuery();
+                while(rs.next()) {
+                    model.addRow(new Object[]{
+                        rs.getString("pendAgama"),
+                        rs.getString("ppkn"),
+                        rs.getString("bhsIndo"),
+                        rs.getString("matematika"),
+                        rs.getString("sejarah"),
+                        rs.getString("bhsInggris"),
+                        rs.getString("seniBudaya"),
+                        rs.getString("bhsJawa"),
+                        rs.getString("biologi"),
+                        rs.getString("fisika"),
+                        rs.getString("kimia")
+                    });
+                }
+                rs.close();
+                stmt.close();
+                conn.close();
+
+                tableData.setModel(model);
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,66 +145,138 @@ public class Beranda extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableData = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        infoProgStudi = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setLayout(new java.awt.CardLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setText("BIODATA DIRI");
+        jLabel1.setFont(new java.awt.Font("Myanmar Text", 1, 18)); // NOI18N
+        jLabel1.setText("Halo");
 
-        jLabel2.setText("jLabel2");
+        tableData.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tableData);
 
-        jLabel3.setText("jLabel3");
+        jPanel2.setBackground(new java.awt.Color(51, 153, 255));
 
-        jLabel4.setText("jLabel4");
+        jLabel3.setText("Program Studi :");
 
-        jLabel5.setText("jLabel5");
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(jLabel3)
+                .addContainerGap(94, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel3)
+                .addContainerGap(102, Short.MAX_VALUE))
+        );
+
+        jPanel3.setBackground(new java.awt.Color(51, 153, 255));
+
+        jLabel2.setFont(new java.awt.Font("Myanmar Text", 0, 12)); // NOI18N
+        jLabel2.setText("Informasi Pendaftaran");
+
+        infoProgStudi.setFont(new java.awt.Font("Myanmar Text", 1, 14)); // NOI18N
+        infoProgStudi.setText("Program Studi : Anda belum memilih");
+
+        jButton1.setText("Edit");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(infoProgStudi)
+                .addContainerGap(113, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(99, 99, 99))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(15, 15, 15))))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(infoProgStudi)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1)
-                .addGap(64, 64, 64)
-                .addComponent(jLabel2)
-                .addGap(72, 72, 72)
-                .addComponent(jLabel3)
-                .addGap(75, 75, 75)
-                .addComponent(jLabel4)
-                .addGap(101, 101, 101)
-                .addComponent(jLabel5)
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(387, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addContainerGap(430, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(198, Short.MAX_VALUE))
         );
 
         add(jPanel1, "card2");
     }// </editor-fold>//GEN-END:initComponents
-
-
-
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel infoProgStudi;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tableData;
     // End of variables declaration//GEN-END:variables
 }

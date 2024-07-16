@@ -3,18 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package Main;
-import static Main.Biodata.DB_URL;
-import static Main.Biodata.JDBC_DRIVER;
-import static Main.Biodata.PASS;
-import static Main.Biodata.USER;
-import static Main.Biodata.conn;
-import static Main.Pendaftaran.DB_URL;
-import static Main.Pendaftaran.JDBC_DRIVER;
-import static Main.Pendaftaran.PASS;
-import static Main.Pendaftaran.USER;
-import static Main.Pendaftaran.conn;
 import java.sql.*;
-import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import models.User;
 /**
@@ -37,6 +26,7 @@ public class Prestasi extends javax.swing.JPanel {
     public Prestasi() {
         initComponents();
         loadData();
+        loadData2();
     }
     
     private void loadData() {
@@ -159,13 +149,13 @@ public class Prestasi extends javax.swing.JPanel {
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
-        jTextField17 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jButton3 = new javax.swing.JButton();
+        txtPenyelenggara = new javax.swing.JTextField();
+        txtNamaKejuaraan = new javax.swing.JTextField();
+        txtTingkat = new javax.swing.JComboBox<>();
+        txtKategori = new javax.swing.JComboBox<>();
+        txtTahun = new javax.swing.JComboBox<>();
+        txtJuara = new javax.swing.JComboBox<>();
+        btnSimpan2 = new javax.swing.JButton();
         btnEdit2 = new javax.swing.JButton();
 
         setLayout(new java.awt.CardLayout());
@@ -242,17 +232,27 @@ public class Prestasi extends javax.swing.JPanel {
 
         jLabel19.setText("Penyelenggara");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Internasional", "Nasional", "Provinsi", "Kabupaten/Kota" }));
+        txtTingkat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Internasional", "Nasional", "Provinsi", "Kabupaten/Kota" }));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Akademik", "Non Akademik" }));
+        txtKategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Akademik", "Non Akademik" }));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2024", "2023", "2022", "2021", "2020" }));
+        txtTahun.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2024", "2023", "2022", "2021", "2020" }));
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
+        txtJuara.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
 
-        jButton3.setText("Simpan");
+        btnSimpan2.setText("Simpan");
+        btnSimpan2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimpan2ActionPerformed(evt);
+            }
+        });
 
         btnEdit2.setText("Edit");
+        btnEdit2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEdit2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -298,7 +298,7 @@ public class Prestasi extends javax.swing.JPanel {
                                         .addGap(103, 103, 103)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jButton3)
+                                                .addComponent(btnSimpan2)
                                                 .addGap(41, 41, 41))
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,13 +310,13 @@ public class Prestasi extends javax.swing.JPanel {
                                                     .addComponent(jLabel16))
                                                 .addGap(52, 52, 52)
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txtJuara, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txtTahun, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txtPenyelenggara, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txtNamaKejuaraan, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                        .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, 0, Short.MAX_VALUE)
-                                                        .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                                        .addComponent(txtKategori, javax.swing.GroupLayout.Alignment.LEADING, 0, 0, Short.MAX_VALUE)
+                                                        .addComponent(txtTingkat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(159, 159, 159)
                                         .addComponent(btnEdit2)))))
@@ -343,9 +343,9 @@ public class Prestasi extends javax.swing.JPanel {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtKategori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtTingkat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel15)
@@ -355,20 +355,20 @@ public class Prestasi extends javax.swing.JPanel {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtPenyelenggara, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel19))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtNamaKejuaraan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel16))
                                         .addGap(15, 15, 15)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(jLabel14)
-                                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(txtJuara, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(35, 35, 35))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel18)
-                                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(txtTahun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -403,7 +403,7 @@ public class Prestasi extends javax.swing.JPanel {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(39, 39, 39)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jButton3)
+                                    .addComponent(btnSimpan2)
                                     .addComponent(btnEdit2))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -500,18 +500,18 @@ public class Prestasi extends javax.swing.JPanel {
                 }
 
                 try (PreparedStatement ps = conn.prepareStatement(sql)) {
-                    ps.setInt(1, pendAgama);
-                    ps.setInt(2, ppkn);
-                    ps.setInt(3, bhsIndo);
-                    ps.setInt(4, matematika);
-                    ps.setInt(5, sejarah);
-                    ps.setInt(6, bhsInggris);
-                    ps.setInt(7, seniBudaya);
-                    ps.setInt(8, bhsJawa);
-                    ps.setInt(9, biologi);
-                    ps.setInt(10, fisika);
-                    ps.setInt(11, kimia);
-                    ps.setString(12, id);
+                    ps.setString(1, id);
+                    ps.setInt(2, pendAgama);
+                    ps.setInt(3, ppkn);
+                    ps.setInt(4, bhsIndo);
+                    ps.setInt(5, matematika);
+                    ps.setInt(6, sejarah);
+                    ps.setInt(7, bhsInggris);
+                    ps.setInt(8, seniBudaya);
+                    ps.setInt(9, bhsJawa);
+                    ps.setInt(10, biologi);
+                    ps.setInt(11, fisika);
+                    ps.setInt(12, kimia);
                     ps.executeUpdate();
                 }
                 JOptionPane.showMessageDialog(null, "Data berhasil disimpan!");
@@ -532,7 +532,7 @@ public class Prestasi extends javax.swing.JPanel {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Driver JDBC tidak ditemukan!");
         }
-   }
+    }
     }//GEN-LAST:event_btnSimpan1ActionPerformed
 
     private void setFieldsEnabled(boolean enabled) {
@@ -564,17 +564,168 @@ public class Prestasi extends javax.swing.JPanel {
             btnEdit1.setEnabled(false);
             btnSimpan1.setEnabled(true);
     }//GEN-LAST:event_btnEdit1ActionPerformed
+    
+    private void loadData2() {
+        User user = Session.getInstance().getUser();
+    if (user == null) {
+        System.out.println("User is null in loadData");
+        return;
+    }
+    String id = user.getId();
+    System.out.println("Loading data for ID: " + id);
+    
+    try {
+        Class.forName(JDBC_DRIVER);
+        conn = DriverManager.getConnection(DB_URL, USER, PASS);
+        String sql = "SELECT * FROM prestasi WHERE id = ?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, id);
+        ResultSet rs = ps.executeQuery();
+        
+        if (rs.next()) {
+            System.out.println("Data found for ID: " + id);
+            txtKategori.setSelectedItem(rs.getString("kategori"));
+            txtTingkat.setSelectedItem(rs.getString("tingkat"));
+            txtPenyelenggara.setText(rs.getString("penyelenggara"));
+            txtNamaKejuaraan.setText(rs.getString("namaKejuaraan"));
+            txtJuara.setSelectedItem(rs.getString("juara"));
+            txtTahun.setSelectedItem(rs.getString("tahun"));
+            
+            // Disable fields and enable the edit button
+            txtKategori.setEnabled(false);
+            txtTingkat.setEnabled(false);
+            txtPenyelenggara.setEnabled(false);
+            txtNamaKejuaraan.setEnabled(false);
+            txtJuara.setEnabled(false);
+            txtTahun.setEnabled(false);
+            btnSimpan2.setEnabled(false);
+            btnEdit2.setEnabled(true);
+            
+        } else {
+            System.out.println("No data found for ID: " + id);
+            
+            // Enable fields and disable the edit button
+            txtKategori.setEnabled(true);
+            txtTingkat.setEnabled(true);
+            txtPenyelenggara.setEnabled(true);
+            txtNamaKejuaraan.setEnabled(true);
+            txtJuara.setEnabled(true);
+            txtTahun.setEnabled(true);
+            btnSimpan2.setEnabled(true);
+            btnEdit2.setEnabled(false);
+        }
+        
+        rs.close();
+        ps.close();
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat mengambil data!");
+    } finally {
+        try {
+            if (conn != null) conn.close();
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+    }
+    }
+    private void btnSimpan2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpan2ActionPerformed
+         User user = Session.getInstance().getUser();
+    if (user == null) {
+        System.out.println("User is null in btnKirimActionPerformed");
+        return;
+    }
+    String id = user.getId();
+    String kategori = (String) txtKategori.getSelectedItem();
+    String tingkat = (String) txtTingkat.getSelectedItem();
+    String penyelenggara = txtPenyelenggara.getText();
+    String namaKejuaraan = txtNamaKejuaraan.getText();
+    String strJuara = (String) txtJuara.getSelectedItem();
+    String tahun = (String) txtTahun.getSelectedItem();
+
+    if (id.isEmpty() || kategori.isEmpty() || tingkat.isEmpty() || penyelenggara.isEmpty() || 
+            namaKejuaraan.isEmpty() || strJuara.isEmpty() || tahun.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Semua harus di isi");
+    } else {
+        try {
+            int juara = Integer.parseInt(strJuara);
+
+
+            Class.forName(JDBC_DRIVER);
+            try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS)) {
+
+                // Check if the data already exists
+                String checkSql = "SELECT COUNT(*) FROM prestasi WHERE id = ?";
+                int count;
+                try (PreparedStatement checkPs = conn.prepareStatement(checkSql)) {
+                    checkPs.setString(1, id);
+                    ResultSet rs = checkPs.executeQuery();
+                    rs.next();
+                    count = rs.getInt(1);
+                }
+
+                String sql;
+                if (count > 0) {
+                    // Update existing data
+                    sql = "UPDATE prestasi SET kategori = ?, tingkat = ?, penyelenggara = ?, namaKejuaraan = ?, juara = ?, tahun = ? WHERE id = ?";
+                } else {
+                    // Insert new data
+                    sql = "INSERT INTO prestasi (id, kategori, tingkat, penyelenggara, namaKejuaraan, juara, tahun) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                }
+
+                try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                    ps.setString(1, id);
+                    ps.setString(2, kategori);
+                    ps.setString(3, tingkat);
+                    ps.setString(4, penyelenggara);
+                    ps.setString(5, namaKejuaraan);
+                    ps.setInt(6, juara);
+                    ps.setString(7, tahun);
+                    ps.executeUpdate();
+                }
+                JOptionPane.showMessageDialog(null, "Data berhasil disimpan!");
+                System.out.println("Data saved for ID: " + id);
+
+                // Disable text fields and button
+                txtKategori.setEnabled(false);
+                txtTingkat.setEnabled(false);
+                txtPenyelenggara.setEnabled(false);
+                txtNamaKejuaraan.setEnabled(false);
+                txtJuara.setEnabled(false);
+                txtTahun.setEnabled(false);
+                btnSimpan2.setEnabled(false);
+                btnEdit2.setEnabled(true);
+
+            } catch (SQLException se) {
+                se.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat menyimpan data!");
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Masukkan nilai numerik yang valid!");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Driver JDBC tidak ditemukan!");
+        }
+   }
+    }//GEN-LAST:event_btnSimpan2ActionPerformed
+
+    private void btnEdit2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdit2ActionPerformed
+        txtKategori.setEnabled(true);
+            txtTingkat.setEnabled(true);
+            txtPenyelenggara.setEnabled(true);
+            txtNamaKejuaraan.setEnabled(true);
+            txtJuara.setEnabled(true);
+            txtTahun.setEnabled(true);
+            btnSimpan2.setEnabled(true);
+            btnEdit2.setEnabled(false);
+        
+    }//GEN-LAST:event_btnEdit2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEdit1;
     private javax.swing.JButton btnEdit2;
     private javax.swing.JButton btnSimpan1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
+    private javax.swing.JButton btnSimpan2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -595,8 +746,12 @@ public class Prestasi extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField17;
+    private javax.swing.JComboBox<String> txtJuara;
+    private javax.swing.JComboBox<String> txtKategori;
+    private javax.swing.JTextField txtNamaKejuaraan;
+    private javax.swing.JTextField txtPenyelenggara;
+    private javax.swing.JComboBox<String> txtTahun;
+    private javax.swing.JComboBox<String> txtTingkat;
     private javax.swing.JTextField txtbhsIndo;
     private javax.swing.JTextField txtbhsInggris;
     private javax.swing.JTextField txtbhsJawa;

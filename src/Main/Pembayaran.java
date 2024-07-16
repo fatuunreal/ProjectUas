@@ -3,7 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package Main;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.sql.*;
+import javax.swing.JOptionPane;
 import models.User;
 
 /**
@@ -90,12 +94,15 @@ public class Pembayaran extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         noVaBca = new javax.swing.JLabel();
+        salin1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         noVaJtg = new javax.swing.JLabel();
+        salin2 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         noVaBri = new javax.swing.JLabel();
+        salin3 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         totalTagihan = new javax.swing.JLabel();
@@ -115,27 +122,36 @@ public class Pembayaran extends javax.swing.JPanel {
 
         noVaBca.setText("noVaBca");
 
+        salin1.setText("Salin");
+        salin1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salin1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addComponent(noVaBca)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(jLabel2)
+                .addGap(53, 53, 53)
+                .addComponent(noVaBca)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(salin1)
+                .addGap(37, 37, 37))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
-                .addComponent(noVaBca)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2))
+                .addContainerGap(28, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(noVaBca)
+                        .addComponent(jLabel2))
+                    .addComponent(salin1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(34, 34, 34))
         );
 
         jPanel5.setBackground(new java.awt.Color(0, 153, 255));
@@ -145,27 +161,35 @@ public class Pembayaran extends javax.swing.JPanel {
 
         noVaJtg.setText("noVaJtg");
 
+        salin2.setText("Salin");
+        salin2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salin2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel8))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(noVaJtg)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addComponent(jLabel8)
+                .addGap(44, 44, 44)
+                .addComponent(noVaJtg)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(salin2)
+                .addGap(37, 37, 37))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
-                .addComponent(noVaJtg)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel8))
+                .addContainerGap(32, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(noVaJtg)
+                    .addComponent(jLabel8)
+                    .addComponent(salin2))
+                .addGap(30, 30, 30))
         );
 
         jPanel6.setBackground(new java.awt.Color(0, 153, 255));
@@ -174,27 +198,35 @@ public class Pembayaran extends javax.swing.JPanel {
 
         noVaBri.setText("noVaBri");
 
+        salin3.setText("Salin");
+        salin3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salin3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel9))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(noVaBri)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(40, 40, 40)
+                .addComponent(jLabel9)
+                .addGap(50, 50, 50)
+                .addComponent(noVaBri)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(salin3)
+                .addGap(36, 36, 36))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(34, Short.MAX_VALUE)
-                .addComponent(noVaBri)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel9))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(noVaBri)
+                    .addComponent(jLabel9)
+                    .addComponent(salin3))
+                .addGap(30, 30, 30))
         );
 
         jPanel3.setBackground(new java.awt.Color(0, 153, 255));
@@ -238,7 +270,7 @@ public class Pembayaran extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
+                .addContainerGap(47, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -271,12 +303,36 @@ public class Pembayaran extends javax.swing.JPanel {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         add(jPanel1, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
+    private void salin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salin1ActionPerformed
+        String noVaBcaText = noVaBca.getText();
+        copyToClipboard(noVaBcaText);
+        JOptionPane.showMessageDialog(null, "Nomor VA Bank BCA telah disalin ke clipboard.");
+    }//GEN-LAST:event_salin1ActionPerformed
+
+    private void salin2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salin2ActionPerformed
+        String noVaJtgText = noVaJtg.getText();
+        copyToClipboard(noVaJtgText);
+        JOptionPane.showMessageDialog(null, "Nomor VA Bank Jateng telah disalin ke clipboard.");
+    }//GEN-LAST:event_salin2ActionPerformed
+
+    private void salin3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salin3ActionPerformed
+        String noVaBriText = noVaBri.getText();
+        copyToClipboard(noVaBriText);
+        JOptionPane.showMessageDialog(null, "Nomor VA Bank BRI telah disalin ke clipboard.");
+                                         
+    }//GEN-LAST:event_salin3ActionPerformed
+    
+    private void copyToClipboard(String text) {
+    StringSelection stringSelection = new StringSelection(text);
+    Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+    clipboard.setContents(stringSelection, null);
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -295,6 +351,11 @@ public class Pembayaran extends javax.swing.JPanel {
     private javax.swing.JLabel noVaBca;
     private javax.swing.JLabel noVaBri;
     private javax.swing.JLabel noVaJtg;
+    private javax.swing.JButton salin1;
+    private javax.swing.JButton salin2;
+    private javax.swing.JButton salin3;
     private javax.swing.JLabel totalTagihan;
     // End of variables declaration//GEN-END:variables
+
+    
 }

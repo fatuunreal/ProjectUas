@@ -64,18 +64,10 @@ public class Dashboard extends javax.swing.JFrame {
         pnLine5 = new javax.swing.JPanel();
         IconPembayaran = new javax.swing.JLabel();
         pembayaran = new javax.swing.JLabel();
-        panelFinalisasi = new javax.swing.JPanel();
-        pnLine6 = new javax.swing.JPanel();
-        iconFinalisasi = new javax.swing.JLabel();
-        finalisasi = new javax.swing.JLabel();
         panelLogout = new javax.swing.JPanel();
         pnLine7 = new javax.swing.JPanel();
         iconLogout = new javax.swing.JLabel();
         logout = new javax.swing.JLabel();
-        panelInformasi = new javax.swing.JPanel();
-        pnLine8 = new javax.swing.JPanel();
-        iconinformasi = new javax.swing.JLabel();
-        informasi = new javax.swing.JLabel();
         panelKanan = new javax.swing.JPanel();
         panelAtas = new javax.swing.JPanel();
         panalDasar = new javax.swing.JPanel();
@@ -459,79 +451,6 @@ public class Dashboard extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        panelFinalisasi.setBackground(new java.awt.Color(240, 240, 240));
-        panelFinalisasi.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                panelFinalisasiMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                panelFinalisasiMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                panelFinalisasiMouseExited(evt);
-            }
-        });
-
-        pnLine6.setBackground(new java.awt.Color(240, 240, 240));
-
-        javax.swing.GroupLayout pnLine6Layout = new javax.swing.GroupLayout(pnLine6);
-        pnLine6.setLayout(pnLine6Layout);
-        pnLine6Layout.setHorizontalGroup(
-            pnLine6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 12, Short.MAX_VALUE)
-        );
-        pnLine6Layout.setVerticalGroup(
-            pnLine6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        iconFinalisasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/black-check-box-with-white-check_icon-icons.com_72859.png"))); // NOI18N
-        iconFinalisasi.setText("jLabel2");
-        iconFinalisasi.setPreferredSize(new java.awt.Dimension(40, 40));
-        iconFinalisasi.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                iconFinalisasiMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                iconFinalisasiMouseExited(evt);
-            }
-        });
-
-        finalisasi.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        finalisasi.setText("FInalisasi");
-        finalisasi.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                finalisasiMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                finalisasiMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelFinalisasiLayout = new javax.swing.GroupLayout(panelFinalisasi);
-        panelFinalisasi.setLayout(panelFinalisasiLayout);
-        panelFinalisasiLayout.setHorizontalGroup(
-            panelFinalisasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelFinalisasiLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(pnLine6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(iconFinalisasi, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(finalisasi, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
-        );
-        panelFinalisasiLayout.setVerticalGroup(
-            panelFinalisasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelFinalisasiLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelFinalisasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(iconFinalisasi, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-                    .addComponent(finalisasi)
-                    .addComponent(pnLine6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
         panelLogout.setBackground(new java.awt.Color(240, 240, 240));
         panelLogout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -605,79 +524,6 @@ public class Dashboard extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        panelInformasi.setBackground(new java.awt.Color(240, 240, 240));
-        panelInformasi.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                panelInformasiMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                panelInformasiMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                panelInformasiMouseExited(evt);
-            }
-        });
-
-        pnLine8.setBackground(new java.awt.Color(240, 240, 240));
-
-        javax.swing.GroupLayout pnLine8Layout = new javax.swing.GroupLayout(pnLine8);
-        pnLine8.setLayout(pnLine8Layout);
-        pnLine8Layout.setHorizontalGroup(
-            pnLine8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 12, Short.MAX_VALUE)
-        );
-        pnLine8Layout.setVerticalGroup(
-            pnLine8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        iconinformasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/info_information_icon_178159.png"))); // NOI18N
-        iconinformasi.setText("jLabel2");
-        iconinformasi.setPreferredSize(new java.awt.Dimension(40, 40));
-        iconinformasi.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                iconinformasiMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                iconinformasiMouseExited(evt);
-            }
-        });
-
-        informasi.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        informasi.setText("Informasi");
-        informasi.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                informasiMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                informasiMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelInformasiLayout = new javax.swing.GroupLayout(panelInformasi);
-        panelInformasi.setLayout(panelInformasiLayout);
-        panelInformasiLayout.setHorizontalGroup(
-            panelInformasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelInformasiLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(pnLine8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(iconinformasi, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(informasi, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
-        );
-        panelInformasiLayout.setVerticalGroup(
-            panelInformasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelInformasiLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelInformasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(iconinformasi, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-                    .addComponent(informasi)
-                    .addComponent(pnLine8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
         javax.swing.GroupLayout panelKiriLayout = new javax.swing.GroupLayout(panelKiri);
         panelKiri.setLayout(panelKiriLayout);
         panelKiriLayout.setHorizontalGroup(
@@ -691,9 +537,7 @@ public class Dashboard extends javax.swing.JFrame {
                     .addComponent(panelPendaftaran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panelPrestasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panelPembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelFinalisasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelLogout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelInformasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(panelLogout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -718,11 +562,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(panelPrestasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelPembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelFinalisasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelInformasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
                 .addComponent(panelLogout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
         );
@@ -886,31 +726,6 @@ public class Dashboard extends javax.swing.JFrame {
         panelPembayaran.setBackground(new Color(242,242,242));
     }//GEN-LAST:event_panelPembayaranMouseExited
 
-    private void iconFinalisasiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconFinalisasiMouseExited
-        finalisasi.setBackground(new Color(242,242,242));
-        panelFinalisasi.setBackground(new Color(242,242,242));
-    }//GEN-LAST:event_iconFinalisasiMouseExited
-
-    private void finalisasiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finalisasiMouseEntered
-        finalisasi.setBackground(new Color(191, 191, 191));
-        panelFinalisasi.setBackground(new Color(191, 191, 191));
-    }//GEN-LAST:event_finalisasiMouseEntered
-
-    private void finalisasiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finalisasiMouseExited
-        finalisasi.setBackground(new Color(242,242,242));
-        panelFinalisasi.setBackground(new Color(242,242,242));
-    }//GEN-LAST:event_finalisasiMouseExited
-
-    private void panelFinalisasiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelFinalisasiMouseEntered
-        finalisasi.setBackground(new Color(191, 191, 191));
-        panelFinalisasi.setBackground(new Color(191, 191, 191));
-    }//GEN-LAST:event_panelFinalisasiMouseEntered
-
-    private void panelFinalisasiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelFinalisasiMouseExited
-        finalisasi.setBackground(new Color(242,242,242));
-        panelFinalisasi.setBackground(new Color(242,242,242));
-    }//GEN-LAST:event_panelFinalisasiMouseExited
-
     private void iconLogoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconLogoutMouseExited
        logout.setBackground(new Color(242,242,242));
         panelLogout.setBackground(new Color(242,242,242));
@@ -935,31 +750,6 @@ public class Dashboard extends javax.swing.JFrame {
         logout.setBackground(new Color(242,242,242));
         panelLogout.setBackground(new Color(242,242,242));
     }//GEN-LAST:event_panelLogoutMouseExited
-
-    private void iconinformasiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconinformasiMouseExited
-        informasi.setBackground(new Color(242,242,242));
-        panelInformasi.setBackground(new Color(242,242,242));
-    }//GEN-LAST:event_iconinformasiMouseExited
-
-    private void informasiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_informasiMouseEntered
-        informasi.setBackground(new Color(191, 191, 191));
-        panelInformasi.setBackground(new Color(191, 191, 191));
-    }//GEN-LAST:event_informasiMouseEntered
-
-    private void informasiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_informasiMouseExited
-        informasi.setBackground(new Color(242,242,242));
-        panelInformasi.setBackground(new Color(242,242,242));
-    }//GEN-LAST:event_informasiMouseExited
-
-    private void panelInformasiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelInformasiMouseEntered
-        informasi.setBackground(new Color(191, 191, 191));
-        panelInformasi.setBackground(new Color(191, 191, 191));
-    }//GEN-LAST:event_panelInformasiMouseEntered
-
-    private void panelInformasiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelInformasiMouseExited
-        informasi.setBackground(new Color(242,242,242));
-        panelInformasi.setBackground(new Color(242,242,242));
-    }//GEN-LAST:event_panelInformasiMouseExited
 
     private void panelBiodataMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBiodataMouseExited
         biodata.setBackground(new Color(242,242,242));
@@ -1015,16 +805,6 @@ public class Dashboard extends javax.swing.JFrame {
         panelPembayaran.setBackground(new Color(191, 191, 191));
     }//GEN-LAST:event_IconPembayaranMouseEntered
 
-    private void iconFinalisasiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconFinalisasiMouseEntered
-        finalisasi.setBackground(new Color(191, 191, 191));
-        panelFinalisasi.setBackground(new Color(191, 191, 191));
-    }//GEN-LAST:event_iconFinalisasiMouseEntered
-
-    private void iconinformasiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconinformasiMouseEntered
-        informasi.setBackground(new Color(191, 191, 191));
-        panelInformasi.setBackground(new Color(191, 191, 191));
-    }//GEN-LAST:event_iconinformasiMouseEntered
-
     private void iconLogoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconLogoutMouseEntered
         logout.setBackground(new Color(255, 0, 0));
         panelLogout.setBackground(new Color(255, 0, 0));
@@ -1060,8 +840,8 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_panelBerandaMouseClicked
 
     private void panelPendaftaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPendaftaranMouseClicked
-        beranda.setBackground(new Color(89, 89, 89));
-        panelBeranda.setBackground(new Color(89, 89, 89));
+        pendaftaran.setBackground(new Color(89, 89, 89));
+        panelPendaftaran.setBackground(new Color(89, 89, 89));
         
         panelUtama.removeAll();
         panelUtama.add(new Pendaftaran());
@@ -1070,8 +850,8 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_panelPendaftaranMouseClicked
 
     private void panelPrestasiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPrestasiMouseClicked
-        beranda.setBackground(new Color(89, 89, 89));
-        panelBeranda.setBackground(new Color(89, 89, 89));
+        prestasi.setBackground(new Color(89, 89, 89));
+        panelPrestasi.setBackground(new Color(89, 89, 89));
         
         panelUtama.removeAll();
         panelUtama.add(new Prestasi());
@@ -1080,34 +860,14 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_panelPrestasiMouseClicked
 
     private void panelPembayaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPembayaranMouseClicked
-        beranda.setBackground(new Color(89, 89, 89));
-        panelBeranda.setBackground(new Color(89, 89, 89));
+        pembayaran.setBackground(new Color(89, 89, 89));
+        panelPembayaran.setBackground(new Color(89, 89, 89));
         
         panelUtama.removeAll();
         panelUtama.add(new Pembayaran());
         panelUtama.repaint();
         panelUtama.revalidate();
     }//GEN-LAST:event_panelPembayaranMouseClicked
-
-    private void panelFinalisasiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelFinalisasiMouseClicked
-        beranda.setBackground(new Color(89, 89, 89));
-        panelBeranda.setBackground(new Color(89, 89, 89));
-        
-        panelUtama.removeAll();
-        panelUtama.add(new Finalisasi());
-        panelUtama.repaint();
-        panelUtama.revalidate();
-    }//GEN-LAST:event_panelFinalisasiMouseClicked
-
-    private void panelInformasiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelInformasiMouseClicked
-        beranda.setBackground(new Color(89, 89, 89));
-        panelBeranda.setBackground(new Color(89, 89, 89));
-        
-        panelUtama.removeAll();
-        panelUtama.add(new Informasi());
-        panelUtama.repaint();
-        panelUtama.revalidate();
-    }//GEN-LAST:event_panelInformasiMouseClicked
 
     private void panelLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelLogoutMouseClicked
         int confirm = JOptionPane.showConfirmDialog(this,
@@ -1122,7 +882,7 @@ public class Dashboard extends javax.swing.JFrame {
         // Menampilkan kembali menu utama (Menu.java)
         new Menu().setVisible(true);
     }//GEN-LAST:event_panelLogoutMouseClicked
-    }       
+ }
     /**
      * @param args the command line arguments
      */
@@ -1162,15 +922,11 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel IconPembayaran;
     private javax.swing.JLabel beranda;
     private javax.swing.JLabel biodata;
-    private javax.swing.JLabel finalisasi;
     private javax.swing.JLabel iconBeranda;
     private javax.swing.JLabel iconBiodata;
-    private javax.swing.JLabel iconFinalisasi;
     private javax.swing.JLabel iconLogout;
     private javax.swing.JLabel iconPendaftaran;
     private javax.swing.JLabel iconPrestasi;
-    private javax.swing.JLabel iconinformasi;
-    private javax.swing.JLabel informasi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel logoDInus;
@@ -1179,8 +935,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel panelAtas;
     private javax.swing.JPanel panelBeranda;
     private javax.swing.JPanel panelBiodata;
-    private javax.swing.JPanel panelFinalisasi;
-    private javax.swing.JPanel panelInformasi;
     private javax.swing.JPanel panelKanan;
     private javax.swing.JPanel panelKiri;
     private javax.swing.JPanel panelLogout;
@@ -1195,9 +949,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel pnLine3;
     private javax.swing.JPanel pnLine4;
     private javax.swing.JPanel pnLine5;
-    private javax.swing.JPanel pnLine6;
     private javax.swing.JPanel pnLine7;
-    private javax.swing.JPanel pnLine8;
     private javax.swing.JLabel prestasi;
     // End of variables declaration//GEN-END:variables
 }
